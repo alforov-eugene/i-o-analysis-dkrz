@@ -1,24 +1,22 @@
 .PHONY: default, pdf, open, clean
 
+mdname='bericht'
 name='i-o-Analysis'
 
-default: open
+default: pandoc-pdf
 
-compile:
-	rm -f $(name).pdf
-	pdflatex bericht.tex
-	mv bericht.pdf $(name).pdf
+all: html latex pdf epub
 
-clean:
-	rm -f *.zip
-	rm -f *.fls
-	rm -f *.log
-	rm -f *.out
-	rm -f *.aux
-	rm -f *.fdb*
-	rm -f *.toc
+watch:
+	python2 pandoc-watch/pandocwatch.py --toc -V documentclass=article --template template.tex -o $(name).pdf $(mdname).md
 
-open: pdf clean
+html:
+	pandoc --toc --standalone -o $(name).html $(mdname).md
+latex:
+	pandoc --toc -V documentclass=article --template template.tex -o $(name).tex $(mdname).md
+
+pandoc-pdf:
+	pandoc --toc -V documentclass=article --template template.tex -o $(name).pdf $(mdname).md
 	xdg-open $(name).pdf
-
-pdf: compile clean
+epub:
+	pandoc --toc -o $(name).epub $(mdname).md
