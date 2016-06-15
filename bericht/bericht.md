@@ -37,7 +37,7 @@ Awips2 requires a directory at root location "/awips2/". There are about 2000 li
 CESM itself consists of seven geophysical models like ocean, land, ice, atmosphere ... . The CESM project is made and supported by U.S. climate reseachers and mainly by the National Science Foundation (NSF). The scientific development is conducted by the CESM working group twice a year. For more information related to the development its recommended to visit the website [verlinkung zur quelle].
 
 ## Requirements
-Here are some preconditions directly taken from the documentation of CESM:
+Here are some preconditions directly taken from the documentation of CESM.
 
 * UNIX style operating system such as CNL, AIX and Linux
 * csh, sh, and perl scripting languages
@@ -53,18 +53,17 @@ Here are some preconditions directly taken from the documentation of CESM:
 
 ## Installation
 - Open source
-- Download:
-    - `http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/x290.html#download_ccsm_code`
+- Download at [CCMS(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/x290.html#download_ccsm_code):
     - Username: guestuser
     - Password: friendly
 - Version 1.2.1
 - Available with svn: 
 
-        svn co https://svn-ccsm-models.cgd.ucar.edu/cesm1/release_tags/cesm1_2_1 cesm1_2_1
-        --username guestuser --password friendly
+        svn co https://svn-ccsm-models.cgd.ucar.edu/cesm1/release_tags/cesm1_2_1 \
+        cesm1_2_1 --username guestuser --password friendly
 
 
-Most parts of the CESM software project are licensed after open source license. However three used libraries are written by the Los Almos National Laboratory, who published their software free to use as long as it isn't used in a commercial context. Affected libraries are POP, SCRI and CICE. http://www.cesm.ucar.edu/management/UofCAcopyright.ccsm3.html
+Most parts of the CESM software project are open source. However three libraries are pulbished by the Los Almos National Laboratory, who licenced their software as free to use as long as it isn't used in a commercial context. Affected libraries are POP, SCRI and CICE [(Link to licence)](http://www.cesm.ucar.edu/management/UofCAcopyright.ccsm3.html).
 
 
 # Conclusion
