@@ -1,0 +1,215 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdftitle={Mobile- und Internetbasierte Systeme},
+            pdfauthor={Seminararbeit, Peer-to-Peer},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\title{Mobile- und Internetbasierte Systeme}
+\author{Seminararbeit, Peer-to-Peer}
+\date{Arne Beer, MN 6489196, Frank Röder, MN 1234567}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\pagebreak
+
+\section{Introduction}\label{introduction}
+
+\subsection{About the paper}\label{about-the-paper}
+
+In this paper we analyse and present the pros and cons of different data
+structures required by a some carefully picked climate and weather
+prediction models. Further we look at the absolute bare minimum of data
+required by those models.
+
+\subsection{Getting started}\label{getting-started}
+
+With intent to get an overview about the richness of climate,land,ice,
+weather and ocean models we took a look at some in depth to work out
+that the approachability and documentation was not that clear. Tons of
+very old models passed our way of searching through the sides of got
+dusty projects and source code. The question than was to get an good
+overview of up to date and easy to handle models which are still
+supported and updated.
+
+\subsection{How we want to help}\label{how-we-want-to-help}
+
+bla bla bla jeder kann sich an dem Paper schnell und effektive bedienen
+
+\section{IFS - Integrated Forecasting
+System}\label{ifs---integrated-forecasting-system}
+
+\subsection{About IFS}\label{about-ifs}
+
+IFS is a Model by European Centre for Medium-range Weather Forecast
+(ECMWF) which is used to make analysis of data. This data can be a
+variety of different physical bulks. This model looked quite promising
+as they offered an OpenIFS version of the model. After some research we
+discovered that the licence forbids ``Commercial and benchmarking use of
+OpenIFS models'', which stopped us from further investigation. I would
+recommend to use this model in a research or academic context, as there
+is plenty of documentation and a big user base.
+
+\section{Unidata - Awips2}\label{unidata---awips2}
+
+AWIPS2 is a package which contains weather forecast display and
+analysis. This open-source java application consists of EDEX a data
+server and CAVE the client for data analysis and rendering.
+
+\subsection{Installation}\label{installation}
+
+For the installation of awips2 ones can easily download the repository
+from github and make it run with installCave.sh and installEDEX.sh.
+Those install scripts use yum as a package manager are currently
+supported for CentOS, Fedora and RedHead. To make it compatible for the
+cluster there is maybe more to be done. Awips2 is normally installed
+with the help of the package manger YUM which could lead to some
+problems if you' re not the root. Awips2 requires a directory at root
+location ``/awips2/''. There are about 2000 lines of code where
+``/awips2/'' is hardcoded, so switching directories is not an option.
+
+\textbf{To build} a version for our purpose it would be the best to have
+a EDEX on the cluster which is providing our local CAVE with data for
+visualisation.
+
+\section{CESM - Community Earth System
+Model}\label{cesm---community-earth-system-model}
+
+\subsection{About CESM}\label{about-cesm}
+
+CESM itself consists of seven geophysical models like ocean, land, ice,
+atmosphere \ldots{} . The CESM project is made and supported by U.S.
+climate reseachers and mainly by the National Science Foundation (NSF).
+The scientific development is conducted by the CESM working group twice
+a year. For more information related to the development its recommended
+to visit the website {[}verlinkung zur quelle{]}.
+
+\subsection{Requirements}\label{requirements}
+
+Here are some preconditions directly taken from the documentation of
+CESM.
+
+\begin{itemize}
+\tightlist
+\item
+  UNIX style operating system such as CNL, AIX and Linux
+\item
+  csh, sh, and perl scripting languages
+\item
+  subversion client version 1.4.2 or greater
+\item
+  Fortran (2003 recommended, 90 required) and C compilers. pgi, intel,
+  and xlf are recommended compilers.
+\item
+  MPI (although CESM does not absolutely require it for running on one
+  processor)
+\item
+  NetCDF 4.2.0 or newer.
+\item
+  ESMF 5.2.0 or newer (optional).
+\item
+  pnetcdf 1.2.0 is required and 1.3.1 is recommended
+\item
+  Trilinos may be required for certain configurations
+\item
+  LAPACKm or a vendor supplied equivalent may also be required for some
+  configurations.
+\item
+  CMake 2.8.6 or newer is required for configurations that include CISM.
+\end{itemize}
+
+\subsection{Installation}\label{installation-1}
+
+\begin{itemize}
+\item
+  Open source
+\item
+  Download at
+  \href{http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/x290.html\#download_ccsm_code}{CCMS(Link)}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Username: guestuser
+  \item
+    Password: friendly
+  \end{itemize}
+\item
+  Version 1.2.1
+\item
+  Available with svn:
+
+\begin{verbatim}
+svn co https://svn-ccsm-models.cgd.ucar.edu/cesm1/release_tags/cesm1_2_1 \
+cesm1_2_1 --username guestuser --password friendly
+\end{verbatim}
+\end{itemize}
+
+Most parts of the CESM software project are open source. However three
+libraries are pulbished by the Los Almos National Laboratory, who
+licenced their software as free to use as long as it isn't used in a
+commercial context. Affected libraries are POP, SCRI and CICE
+\href{http://www.cesm.ucar.edu/management/UofCAcopyright.ccsm3.html}{(Link
+to licence)}.
+
+\section{Conclusion}\label{conclusion}
+
+EDEX \& CAVE are supported by the U.S. company Raytheon.
+
+bla bla bla nice project.
+
+\section{References}\label{references}
+
+http://www.cesm.ucar.edu/models/current.html http://www2.cesm.ucar.edu/
+http://www.ecmwf.int/en/forecasts/
+http://www.unidata.ucar.edu/software/awips2/
+
+\end{document}
