@@ -4,13 +4,10 @@ name='i-o-Analysis'
 
 default: open
 
-pdf:
+compile:
 	rm -f $(name).pdf
 	pdflatex bericht.tex
 	mv bericht.pdf $(name).pdf
-
-open: pdf clean
-	xdg-open $(name).pdf
 
 clean:
 	rm -f *.zip
@@ -20,3 +17,8 @@ clean:
 	rm -f *.aux
 	rm -f *.fdb*
 	rm -f *.toc
+
+open: pdf clean
+	xdg-open $(name).pdf
+
+pdf: compile clean
