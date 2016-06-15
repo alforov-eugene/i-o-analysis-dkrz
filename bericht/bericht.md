@@ -37,7 +37,7 @@ Awips2 requires a directory at root location "/awips2/". There are about 2000 li
 CESM itself consists of seven geophysical models like ocean, land, ice, atmosphere ... . The CESM project is made and supported by U.S. climate reseachers and mainly by the National Science Foundation (NSF). The scientific development is conducted by the CESM working group twice a year. For more information related to the development its recommended to visit the website [verlinkung zur quelle].
 
 ## Requirements
-Here are some preconditions directly taken from the documentation of CESM.
+Here are some preconditions directly taken from the documentation of CESM:
 
 * UNIX style operating system such as CNL, AIX and Linux
 * csh, sh, and perl scripting languages
