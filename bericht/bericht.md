@@ -53,13 +53,15 @@ Here are some preconditions directly taken from the documentation of CESM:
 
 ## Installation
 - Open source
-- Download at `http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/x290.html#download_ccsm_code`
+- Download:
+    - `http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/x290.html#download_ccsm_code`
     - Username: guestuser
     - Password: friendly
 - Version 1.2.1
 - Available with svn: 
 
-        svn co https://svn-ccsm-models.cgd.ucar.edu/cesm1/release_tags/cesm1_2_1 cesm1_2_1 --username guestuser --password friendly
+        svn co https://svn-ccsm-models.cgd.ucar.edu/cesm1/release_tags/cesm1_2_1 cesm1_2_1
+        --username guestuser --password friendly
 
 
 Most parts of the CESM software project are licensed after open source license. However three used libraries are written by the Los Almos National Laboratory, who published their software free to use as long as it isn't used in a commercial context. Affected libraries are POP, SCRI and CICE. http://www.cesm.ucar.edu/management/UofCAcopyright.ccsm3.html
