@@ -1,6 +1,5 @@
-% Mobile- und Internetbasierte Systeme
-% Seminararbeit, Peer-to-Peer
-% Arne Beer, MN 6489196, Frank Röder, MN 1234567
+% I/O analysis of climate applications 
+% Arne Beer, MN 6489196, Frank Röder, MN 6526113
 
 \pagebreak
 
