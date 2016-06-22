@@ -194,6 +194,19 @@ have to walk through the list:
 svn co https://svn-ccsm-models.cgd.ucar.edu/cesm1/release_tags/cesm1_2_1 \
 cesm1_2_1 --username guestuser --password friendly
 \end{verbatim}
+\item
+  We recommend to create an entry in your
+  \texttt{\textasciitilde{}/.subversion/servers} config for later svn
+  usage with scripts:
+
+\begin{verbatim}
+[groups]
+cesm = svn-ccsm-inputdata.cgd.ucar.edu
+
+[cesm]
+username = guestuser
+store-passwords = yes
+\end{verbatim}
 \end{itemize}
 
 Most parts of the CESM software project are open source. However three
@@ -222,6 +235,18 @@ is a possibility to make it also run on generic machines with the
 varibale argument \texttt{create\_newcase}. Files in the subdirectory of
 the \texttt{\$DIN\_LOCK\_ROOT} should be write-protected to exclude
 accidentally deleting or changeing of them.
+
+\subsubsection{Getting data}\label{getting-data}
+
+The data download script lies in
+\texttt{cesm1\_2\_1/scripts/ccsm\_utils/Tools}. To download input data
+to a specific data directory execute this, with an adjusted path.
+
+\begin{verbatim}
+     export DIN_LOC_ROOT='/Path/to/input/data/dir'
+     mkdir -p $DIN_LOC_ROOT
+    ./check_input_data -inputdata $DIN_LOC_ROOT -export -datalistdir $DIN_LOC_ROOT       
+\end{verbatim}
 
 \section{Conclusion}\label{conclusion}
 
