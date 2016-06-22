@@ -125,6 +125,14 @@ After the job finished you can review all the following directories and files li
         svn co https://svn-ccsm-models.cgd.ucar.edu/cesm1/release_tags/cesm1_2_1 \
         cesm1_2_1 --username guestuser --password friendly
 
+- We recommend to create an entry in your `~/.subversion/servers` config for later svn usage with scripts:
+
+        [groups]
+        cesm = svn-ccsm-inputdata.cgd.ucar.edu
+
+        [cesm]
+        username = guestuser
+        store-passwords = yes
 
 Most parts of the CESM software project are open source. However three libraries are pulbished by the Los Almos National Laboratory, who licenced their software as free to use as long as it isn't used in a commercial context. Affected libraries are POP, SCRI and CICE [(Link to licence)](http://www.cesm.ucar.edu/management/UofCAcopyright.ccsm3.html).
 
@@ -139,6 +147,17 @@ As we are executing our CESM executable there is the utility `check_input_data` 
 If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcomands direct, but it is much better to use the `check_input_data` script as it secures to download only the required data.
 
 ## CESM Creating And Configure A Case
+As we are executing our CESM executable there is the utility `check_input_data` which is called to locate all the needed input data for a certain case.
+When this data is not found in `$DIN_LOCK_ROOT` it will automatically be downloaded by the scripts or the user using the `check_input_data` with -export as command argument.
+If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcomands direct, but it is much better to use the `check_input_data` script as it secure to download only the required data.
+	
+### Getting data
+The data download script lies in `cesm1_2_1/scripts/ccsm_utils/Tools`.
+To download input data to a specific data directory execute this, with an adjusted path.
+	
+         export DIN_LOC_ROOT='/Path/to/input/data/dir'
+         mkdir -p $DIN_LOC_ROOT
+        ./check_input_data -inputdata $DIN_LOC_ROOT -export -datalistdir $DIN_LOC_ROOT       
 
 # Conclusion
 EDEX & CAVE are supported by the U.S. company Raytheon.
