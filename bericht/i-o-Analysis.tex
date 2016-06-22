@@ -135,35 +135,37 @@ to visit the website {[}verlinkung zur quelle{]}.
 \subsection{Requirements}\label{requirements}
 
 Here are some preconditions directly taken from the documentation of
-CESM.
+CESM. In favour to make it run on the cluster we are working with we
+have to walk through the list:
 
 \begin{itemize}
 \tightlist
 \item
-  UNIX style operating system such as CNL, AIX and Linux
+  UNIX style operating system such as CNL, AIX and Linux ✔
 \item
-  csh, sh, and perl scripting languages
+  csh, sh, and perl scripting languages ✔
 \item
-  subversion client version 1.4.2 or greater
+  subversion client version 1.4.2 or greater ✔
 \item
   Fortran (2003 recommended, 90 required) and C compilers. pgi, intel,
-  and xlf are recommended compilers.
+  and xlf are recommended compilers. ✔ (gfortran gcc-Version 4.8)
 \item
   MPI (although CESM does not absolutely require it for running on one
-  processor)
+  processor) ✔
 \item
-  NetCDF 4.2.0 or newer.
+  NetCDF 4.2.0 or newer. ✔ (Version 7.3 \& 4.2)
 \item
   ESMF 5.2.0 or newer (optional).
 \item
-  pnetcdf 1.2.0 is required and 1.3.1 is recommended
+  pnetcdf 1.2.0 is required and 1.3.1 is recommended ???
 \item
-  Trilinos may be required for certain configurations
+  Trilinos may be required for certain configurations X
 \item
   LAPACKm or a vendor supplied equivalent may also be required for some
-  configurations.
+  configurations. ✔ (Version 3.0)
 \item
   CMake 2.8.6 or newer is required for configurations that include CISM.
+  ✔ (Version 2.8.12.2)
 \end{itemize}
 
 \subsection{Installation}\label{installation-1}
@@ -199,6 +201,26 @@ licenced their software as free to use as long as it isn't used in a
 commercial context. Affected libraries are POP, SCRI and CICE
 \href{http://www.cesm.ucar.edu/management/UofCAcopyright.ccsm3.html}{(Link
 to licence)}.
+
+\subsection{Input Data Set}\label{input-data-set}
+
+\subsubsection{Setup}\label{setup}
+
+There is actually a set of input data which can be downloaded and
+configured for CESM. It can be made available through another Subversion
+input data repository by using the same username as used in the
+installation above. The dataset is around 1 TByte big and should not be
+downloaded at ones. The download is regulated on demand, so if CESM
+needs the particullar data it will be downloaded and checked
+automatically be CESM itself. The data should be on a disk in the local
+area. The CESM variable \texttt{\$DIN\_LOCK\_ROOT} has to be set inside
+of the script. Multiple users can use the same
+\texttt{\$DIN\_LOCK\_ROOT} directory and should be configurated as group
+writeable. If the machine is supported there is a preset otherwise there
+is a possibility to make it also run on generic machines with the
+varibale argument \texttt{create\_newcase}. Files in the subdirectory of
+the \texttt{\$DIN\_LOCK\_ROOT} should be write-protected to exclude
+accidentally deleting or changeing of them.
 
 \section{Conclusion}\label{conclusion}
 
