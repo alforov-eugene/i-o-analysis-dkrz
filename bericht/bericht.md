@@ -87,11 +87,11 @@ I case that a supported machine is in use `($MACH)` tipe the following words:
 
 For running a new target machine use the __section below__.
 
-To setup the case run script be sure to use the `cesm_setup` command which creates a $CASEROOT/$CASE.run script with `user_nl_xxx` files, while the xxx tell us something about the case configuration. But before running `cesm_setup` there is the `env_mach_pes.xml file in $CASEROOT to be modified fitting to the experiment to be run.
+To setup the case run script be sure to use the `cesm_setup` command which creates a $CASEROOT/$CASE.run script with `user_nl_xxx` files, while the xxx tell us something about the case configuration. But before running `cesm_setup` there is the `env_mach_pes.xml` file in $CASEROOT to be modified fitting to the experiment to be run.
 	
 	> cd $CASEROOT
 
-After this the `env_mach_pes.xml` can be modified with the ___xmlchange___ command. Take a look at `xmlchange -h` for detailed information. Then the `cesm_setup`can be initiated.
+After this the `env_mach_pes.xml` can be modified with the ___xmlchange___ command. Take a look at `xmlchange -h` for detailed information. Then the `cesm_setup` can be initiated.
 
 	> ./cesm_setup
 
@@ -141,7 +141,7 @@ Most parts of the CESM software project are open source. However three libraries
 There is actually a set of input data which can be downloaded and configured for CESM. It can be made available through another Subversion input data repository by using the same username as used in the installation above.
 The dataset is around 1 TByte big and should not be downloaded at ones. The download is regulated on demand, so if CESM needs the particullar data it will be downloaded and checked automatically be CESM itself. The data should be on a disk in the local area.
 The CESM variable `$DIN_LOCK_ROOT` has to be set inside of the script. Multiple users can use the same `$DIN_LOCK_ROOT` directory and should be configurated as group writeable.
-If the machine is supported there is a preset otherwise there is a possibility to make it also run on generic machines with the varibale as argument for the `create_newcase` scrpt .
+If the machine is supported there is a preset otherwise there is a possibility to make it also run on generic machines with the varibale as argument for the `./scripts/create_newcase` scrpt .
 Files in the subdirectory of the `$DIN_LOCK_ROOT` should be write-protected to exclude accidentally deleting or changeing of them. 
 As we are executing our CESM executable there is the utility `check_input_data` which is called to locate all the needed input data for a certain case. When this data is not found in `$DIN_LOCK_ROOT` it will automatically be downloaded by the scripts or the user using the `check_input_data` with -export as command argument.
 If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcomands direct, but it is much better to use the `check_input_data` script as it secures to download only the required data.
@@ -158,6 +158,22 @@ To download input data to a specific data directory execute this, with an adjust
          export DIN_LOC_ROOT='/Path/to/input/data/dir'
          mkdir -p $DIN_LOC_ROOT
         ./check_input_data -inputdata $DIN_LOC_ROOT -export -datalistdir $DIN_LOC_ROOT       
+
+
+### Create a new case
+Cases are pretty much a thing. But we don't know what they are...
+To create a case execute `./scripts/create_newcase` with correct parameters, e.g.:
+
+        # Parameters are respectively:
+        # Case name
+        # Machine name
+        # Component set name
+        # Resolution
+        ./create_newcase -case test1 \
+            -mach userdefined  \
+            -compset B1850CN  \
+            -res f45_g37
+
 
 # Conclusion
 EDEX & CAVE are supported by the U.S. company Raytheon.
