@@ -46,17 +46,17 @@ The scientific development is conducted by the CESM working group twice a year. 
 Here are some preconditions directly taken from the documentation of CESM.
 In favour to make it run on the cluster we are working with we have to walk through the list:
 
-* UNIX style operating system such as CNL, AIX and Linux	✔
-* csh, sh, and perl scripting languages		✔
-* subversion client version 1.4.2 or greater	✔
-* Fortran (2003 recommended, 90 required) and C compilers. pgi, intel, and xlf are recommended compilers.	✔ (gfortran gcc-Version 4.8)
-* MPI (although CESM does not absolutely require it for running on one processor)	✔
-* NetCDF 4.2.0 or newer.	✔ (Version 7.3 & 4.2)
+* UNIX style operating system such as CNL, AIX and Linux	\checkmark	
+* csh, sh, and perl scripting languages		\checkmark	
+* subversion client version 1.4.2 or greater	\checkmark	
+* Fortran (2003 recommended, 90 required) and C compilers. pgi, intel, and xlf are recommended compilers.	\checkmark (gfortran gcc-Version 4.8)
+* MPI (although CESM does not absolutely require it for running on one processor)	\checkmark
+* NetCDF 4.2.0 or newer.	\checkmark (Version 7.3 & 4.2)
 * ESMF 5.2.0 or newer (optional).
 * pnetcdf 1.2.0 is required and 1.3.1 is recommended	??? 
 * Trilinos may be required for certain configurations	X
-* LAPACKm or a vendor supplied equivalent may also be required for some configurations.		✔ (Version 3.0)
-* CMake 2.8.6 or newer is required for configurations that include CISM.	✔ (Version 2.8.12.2)
+* LAPACKm or a vendor supplied equivalent may also be required for some configurations.		\checkmark (Version 3.0)
+* CMake 2.8.6 or newer is required for configurations that include CISM.	\checkmark (Version 2.8.12.2)
 
 ## Installation
 - Open source
