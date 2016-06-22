@@ -72,7 +72,6 @@ In favour to make it run on the cluster we are working with we have to walk thro
 
 Most parts of the CESM software project are open source. However three libraries are pulbished by the Los Almos National Laboratory, who licenced their software as free to use as long as it isn't used in a commercial context. Affected libraries are POP, SCRI and CICE [(Link to licence)](http://www.cesm.ucar.edu/management/UofCAcopyright.ccsm3.html).
 
-
 ## Input Data Set
 ### Setup
 There is actually a set of input data which can be downloaded and configured for CESM. It can be made available through another Subversion input data repository by using the same username as used in the installation above.
@@ -81,7 +80,9 @@ The CESM variable `$DIN_LOCK_ROOT` has to be set inside of the script. Multiple 
 If the machine is supported there is a preset otherwise there is a possibility to make it also run on generic machines with the varibale argument `create_newcase`.
 Files in the subdirectory of the `$DIN_LOCK_ROOT` should be write-protected to exclude accidentally deleting or changeing of them. 
 As we are executing our CESM executable there is the utility `check_input_data` which is called to locate all the needed input data for a certain case. When this data is not found in `$DIN_LOCK_ROOT` it will automatically be downloaded by the scripts or the user using the `check_input_data` with -export as command argument.
-If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcomands direct, but it is much better to use the `check_input_data`script as it secure to download only the required data.
+If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcomands direct, but it is much better to use the `check_input_data` script as it secures to download only the required data.
+
+## CESM Creating And Configure A Case
 
 # Conclusion
 EDEX & CAVE are supported by the U.S. company Raytheon.

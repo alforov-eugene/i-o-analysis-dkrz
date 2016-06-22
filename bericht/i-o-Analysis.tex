@@ -221,7 +221,17 @@ writeable. If the machine is supported there is a preset otherwise there
 is a possibility to make it also run on generic machines with the
 varibale argument \texttt{create\_newcase}. Files in the subdirectory of
 the \texttt{\$DIN\_LOCK\_ROOT} should be write-protected to exclude
-accidentally deleting or changeing of them.
+accidentally deleting or changeing of them. As we are executing our CESM
+executable there is the utility \texttt{check\_input\_data} which is
+called to locate all the needed input data for a certain case. When this
+data is not found in \texttt{\$DIN\_LOCK\_ROOT} it will automatically be
+downloaded by the scripts or the user using the
+\texttt{check\_input\_data} with -export as command argument. If ones
+like to download the input manually it should be done \textbf{before}
+building CESM. In addition it is also possible to download the data via
+svn subcomands direct, but it is much better to use the
+\texttt{check\_input\_data}script as it secure to download only the
+required data.
 
 \section{Conclusion}\label{conclusion}
 
