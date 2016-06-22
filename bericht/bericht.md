@@ -58,6 +58,62 @@ In favour to make it run on the cluster we are working with we have to walk thro
 * LAPACKm or a vendor supplied equivalent may also be required for some configurations.		\checkmark (Version 3.0)
 * CMake 2.8.6 or newer is required for configurations that include CISM.	\checkmark (Version 2.8.12.2)
 
+## Quickstart
+This Quickstart should give an overview about te workflow of CESM especially when there is already a version ported to the local target machine. If there is nothing already portet on the start machine, start with the more detailled description below.
+
+There are a couple of definitions which must be unterstand and lead you through this section
+
+	$COMPSET refers to the components set
+	$RES refers to the model resolution
+	$MACH refers to the target machine
+	$CCSMROOT refers to the CESM root directory
+	$CASE refers to the case name
+	$CASEROOT refers to the full pathname of the root directory where the case ($CASE) will be created
+	$EXEROOT refers to the executable directory ($EXEROOT is normally __not__ the same as $CASEROOT)
+	$RUNDIR refers to the directory where CESM actually runs. This is normally set to $EXEROOT/run. (changing $EXEROOT does not change $RUNDIR as these are independent variavles)
+
+As first step you need to [download(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/x290.html) CESM and select a machine, a component set and a resolution form the list displayed after using this commands:
+	
+	> cd $CCSMROOT/scripts
+	> create_newcase -list
+There is a list CESM supported CESM components like [sets(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/compsets.html), [resolution(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/grid.html) and [machines(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/machines.html).
+To create a case the command `create_newcase` is used. It creates a case directory containing the scripts and xml files to set up the configurations for resolution, component set and machine requested. The `create_newcase` has some arguments as condition and some additional options for generic machines. For more information `create_newcase -h` should help.
+I case that a supported machine is in use `($MACH)` tipe the following words:
+
+	>create_newcase -case $CASEROOT \
+		-mach $MACH \
+		-compset $COMPSET \
+		-res $RES
+
+For running a new target machine use the __section below__.
+
+To setup the case run script be sure to use the `cesm_setup` command which creates a $CASEROOT/$CASE.run script with `user_nl_xxx` files, while the xxx tell us something about the case configuration. But before running `cesm_setup` there is the `env_mach_pes.xml file in $CASEROOT to be modified fitting to the experiment to be run.
+	
+	> cd $CASEROOT
+
+After this the `env_mach_pes.xml` can be modified with the ___xmlchange___ command. Take a look at `xmlchange -h` for detailed information. Then the `cesm_setup`can be initiated.
+
+	> ./cesm_setup
+
+With the optional build modifications in mind (`env_mach_pes.xml`) the build script can be startet:
+
+	> $CASE.build
+
+To run the case and maybe setting the variable $DOUT_S in `env_mach_pes.xml` to `false` the job can be submitted to the batch queue:
+
+	> $CASE.submit
+
+After the job finished you can review all the following directories and files like:
+
+	* $RUNDIR
+		- the directory set in the `env_build.xml` file
+		- the location where the CESM was run with logfiles for every part
+	* $CASEROOT/logs
+	* $CASEROOT
+	* CASEROOT/CaseDocs
+	* CASEROOT/timing
+	* $DOUTS_S_ROOT/$CASE
+
 ## Installation
 - Open source
 - Download at [CCMS(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/x290.html#download_ccsm_code):
@@ -77,7 +133,7 @@ Most parts of the CESM software project are open source. However three libraries
 There is actually a set of input data which can be downloaded and configured for CESM. It can be made available through another Subversion input data repository by using the same username as used in the installation above.
 The dataset is around 1 TByte big and should not be downloaded at ones. The download is regulated on demand, so if CESM needs the particullar data it will be downloaded and checked automatically be CESM itself. The data should be on a disk in the local area.
 The CESM variable `$DIN_LOCK_ROOT` has to be set inside of the script. Multiple users can use the same `$DIN_LOCK_ROOT` directory and should be configurated as group writeable.
-If the machine is supported there is a preset otherwise there is a possibility to make it also run on generic machines with the varibale argument `create_newcase`.
+If the machine is supported there is a preset otherwise there is a possibility to make it also run on generic machines with the varibale as argument for the `create_newcase` scrpt .
 Files in the subdirectory of the `$DIN_LOCK_ROOT` should be write-protected to exclude accidentally deleting or changeing of them. 
 As we are executing our CESM executable there is the utility `check_input_data` which is called to locate all the needed input data for a certain case. When this data is not found in `$DIN_LOCK_ROOT` it will automatically be downloaded by the scripts or the user using the `check_input_data` with -export as command argument.
 If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcomands direct, but it is much better to use the `check_input_data` script as it secures to download only the required data.
