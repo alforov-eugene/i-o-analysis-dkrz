@@ -105,14 +105,19 @@ To run the case and maybe setting the variable $DOUT_S in `env_mach_pes.xml` to 
 
 After the job finished you can review all the following directories and files like:
 
-	* $RUNDIR
-		- the directory set in the `env_build.xml` file
-		- the location where the CESM was run with logfiles for every part
-	* $CASEROOT/logs
-	* $CASEROOT
-	* CASEROOT/CaseDocs
-	* CASEROOT/timing
-	* $DOUTS_S_ROOT/$CASE
+	1. $RUNDIR
+	  * the directory set in the `env_build.xml` file
+	  * the location where the CESM was run with logfiles for every part
+	2. $CASEROOT/logs
+	  * if the run was successful the log files have been copied into this directory
+	3. $CASEROOT
+	  * here should a standard out or error file
+	4. CASEROOT/CaseDocs
+	  * a list a casenames is copied to this directory
+	5. CASEROOT/timing
+	  * here are timing files which are representing the performance of the model
+	6. $DOUTS_S_ROOT/$CASE
+	  * This directory is an archive depending on the setting done above, while it is true there is a log and history
 
 ## Installation
 - Open source
