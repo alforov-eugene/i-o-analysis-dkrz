@@ -80,7 +80,8 @@ The dataset is around 1 TByte big and should not be downloaded at ones. The down
 The CESM variable `$DIN_LOCK_ROOT` has to be set inside of the script. Multiple users can use the same `$DIN_LOCK_ROOT` directory and should be configurated as group writeable.
 If the machine is supported there is a preset otherwise there is a possibility to make it also run on generic machines with the varibale argument `create_newcase`.
 Files in the subdirectory of the `$DIN_LOCK_ROOT` should be write-protected to exclude accidentally deleting or changeing of them. 
-	
+As we are executing our CESM executable there is the utility `check_input_data` which is called to locate all the needed input data for a certain case. When this data is not found in `$DIN_LOCK_ROOT` it will automatically be downloaded by the scripts or the user using the `check_input_data` with -export as command argument.
+If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcomands direct, but it is much better to use the `check_input_data`script as it secure to download only the required data.
 
 # Conclusion
 EDEX & CAVE are supported by the U.S. company Raytheon.
