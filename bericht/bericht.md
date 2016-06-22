@@ -66,6 +66,11 @@ In favour to make it run on the cluster we are working with we have to walk thro
 Most parts of the CESM software project are open source. However three libraries are pulbished by the Los Almos National Laboratory, who licenced their software as free to use as long as it isn't used in a commercial context. Affected libraries are POP, SCRI and CICE [(Link to licence)](http://www.cesm.ucar.edu/management/UofCAcopyright.ccsm3.html).
 
 
+## Input Data Set
+### Setup
+There is actually a set of input data which can be downloaded and configured for CESM. It can be made available through another Subversion input data repository by using the same username as used in the installation above. The dataset is around 1 TByte big and should not be downloaded at ones. The download is regulated on demand, so if CESM needs the particullar data it will be downloaded and checked automatically be CESM itself. The data should be on a disk in the local area. The CESM variable `$DIN_LOCK_ROOT` has to be set inside of the script. Multiple users can use the same `$DIN_LOCK_ROOT` directory and should be configurated as group writeable. If the machine is supported there is a preset otherwise there is a possibility to make it also run on generic machines with the varibale argument `create_newcase`. Files in the subdirectory of the `$DIN_LOCK_ROOT` should be write-protected to exclude accidentally deleting or changeing of them. 
+	
+
 # Conclusion
 EDEX \& CAVE are supported by the U.S. company Raytheon.
 
