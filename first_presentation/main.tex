@@ -37,7 +37,7 @@
 \institute{Arbeitsbereich Wissenschaftliches Rechnen\\Fachbereich Informatik\\Fakultät für Mathematik, Informatik und Naturwissenschaften\\Universität Hamburg}
 \date{2016-07-2}
 
-%\titlegraphic{\includegraphics[width=0.75\textwidth]{logo}}
+\titlegraphic{\includegraphics[width=0.75\textwidth]{gfx/logo}}
 
 \begin{document}
 
@@ -51,9 +51,6 @@
 	\tableofcontents[hidesubsections]
 \end{frame}
 
-\section{Introduction}
-\subsection{Subsection}
-
 \begin{frame}
 	\frametitle{Introduction}
 
@@ -64,12 +61,7 @@
 			\item Analysis
 			\item different Models
 			\item Visualisation
-			\item our table in progress ... % hier zeigen wir dann unsere Tabelle auf Google Docs
 		\end{itemize}
-	\end{itemize}
-	
-	\begin{itemize}
-		\item Models we choose
 	\end{itemize}
 	
 \end{frame}
@@ -87,6 +79,7 @@
 			\item Predict future climate
 			\item Global scale
 		\end{itemize}
+		
 		\item Atmospherical model
 		\begin{itemize}
 			\item Numerical Weather Prediction
@@ -97,14 +90,13 @@
 \end{frame}
 
 
-\section{Input and Output}
-\subsection{Data}
+\subsection{Input and Output}
 
 \begin{frame}[fragile]
 	\frametitle{Structure of the data}
 
 		\begin{itemize}
-		    	\item Numeric data
+		    \item Numeric data
 			\item Scalar quantities
 			\item Vectors
 			\item grit data
@@ -112,7 +104,8 @@
 	
 \end{frame}
 
-\subsection{}
+\subsection{File Format}
+
 \begin{frame}[fragile]
 	\frametitle{Most important formats used for climate applications}
 
@@ -138,7 +131,7 @@
 \end{frame}
 
 
-\section{The model landscape}
+\subsection{The model landscape}
 \begin{frame}
     \frametitle{The model landscape}
     
@@ -167,7 +160,7 @@
     \frametitle{Awips II}
     	\begin{itemize}
 			\item Forecast display and analysis
-			\item Provides EDEX to store computed data
+			\item Provides EDEX to store computed data \cite {AwipsDocs}
 	    	\begin{itemize}
 		    	\item HDF5 Storage
 		    	\item Custom Python libraries for storage management
@@ -181,65 +174,58 @@
 		\end{itemize}
 \end{frame}
 
-
+\section{CESM}
 \begin{frame}
     \frametitle{CESM}
     	\begin{itemize}
     	    \item Community Earth System Model
 			\item Model for global climate simulation
+			\item Covers Atmosphere, Land, Land Ice, Sea Ice, Ocean and River
 			\item Provides scripts for setting up the machine in 4 commands
 	    	\begin{itemize}
 		    	\item Scripts are broken
 		    	\item Mix of bash, csh, perl
 		    \end{itemize}
 		    \item Good configurability with xml files
+		    \item Requires netCDF format for input data \cite{CESMDocs}
 		\end{itemize}
 \end{frame}
 
 
-\section{Summary}
+\section{Zusammenfassung}
 \subsection*{}
 
 \begin{frame}
-	\frametitle{Summary}
+	\frametitle{Zusammenfassung}
 
 	\begin{itemize}
-	
-		\item Climate Applications
-		\begin{itemize}
-			\item consider I/O
-			\item Models about ocean, ice, land, river, vegetation ...
-			\item some of them can also do weather and climate
-		\end{itemize}
-	
 		\item Data
+		
 		\begin{itemize}
 			\item hdf5 , netCDF
 		\end{itemize}
 		
-		\item Models of our choice
+		\item Models
 		\begin{itemize}
-			\item awips2
 			\item CESM
+			\item EcoHam
 		\end{itemize}
-		
-		
+		\item Analyzer
+		\begin{itemize}
+		    \item awips2
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
-\section*{Literature}
+\section{Literatur}
 \subsection*{}
 
-\begin{frame}
-	\frametitle{Literature}
-    \frametitle{Sources}
-    \begin{itemize}
-    	\item Quelle: \cite{Quelle2012}
-    \end{itemize}
+\begin{frame}[allowframebreaks]
+	\frametitle{Literatur}
+    \frametitle{Quellenverzeichnis}
 
 	\bibliographystyle{alpha}
 	\bibliography{literatur.bib}
 \end{frame}
-
 
 \end{document}
