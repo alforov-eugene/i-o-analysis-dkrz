@@ -1,6 +1,6 @@
 .PHONY: default, pdf, open, clean
 
-name=presentation.pdf
+name=presentation
 sheet=presentation
 
 default: open
