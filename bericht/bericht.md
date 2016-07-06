@@ -183,7 +183,13 @@ To download input data to a specific data directory execute this, with an adjust
         
          export DIN_LOC_ROOT='/Path/to/input/data/dir'
          mkdir -p $DIN_LOC_ROOT
-        ./check_input_data -inputdata $DIN_LOC_ROOT -export -datalistdir $DIN_LOC_ROOT       
+        ./check_input_data -inputdata $DIN_LOC_ROOT -export -datalistdir $DIN_LOC_ROOT  
+
+### Build the Case
+
+	  cd ~/cesm/EXAMPLE_CASE
+	  ./cesm_setup
+	  ./EXAMPLE_CASE.build
 
 # Conclusion
 EDEX & CAVE are supported by the U.S. company Raytheon.
