@@ -46,78 +46,78 @@ The scientific development is conducted by the CESM working group twice a year. 
 Here are some preconditions directly taken from the documentation of CESM.
 In favour to make it run on the cluster we are working with we have to walk through the list:
 
-* UNIX style operating system such as CNL, AIX and Linux	\checkmark	
-* csh, sh, and perl scripting languages		\checkmark	
-* subversion client version 1.4.2 or greater	\checkmark	
-* Fortran (2003 recommended, 90 required) and C compilers. pgi, intel, and xlf are recommended compilers.	\checkmark (gfortran gcc-Version 4.8)
-* MPI (although CESM does not absolutely require it for running on one processor)	\checkmark
-* NetCDF 4.2.0 or newer.	\checkmark (Version 7.3 & 4.2)
+* UNIX style operating system such as CNL, AIX and Linux        \checkmark        
+* csh, sh, and perl scripting languages                \checkmark        
+* subversion client version 1.4.2 or greater        \checkmark        
+* Fortran (2003 recommended, 90 required) and C compilers. pgi, intel, and xlf are recommended compilers.        \checkmark (gfortran gcc-Version 4.8)
+* MPI (although CESM does not absolutely require it for running on one processor)        \checkmark
+* NetCDF 4.2.0 or newer.        \checkmark (Version 7.3 & 4.2)
 * ESMF 5.2.0 or newer (optional).
-* pnetcdf 1.2.0 is required and 1.3.1 is recommended	??? 
-* Trilinos may be required for certain configurations	X
-* LAPACKm or a vendor supplied equivalent may also be required for some configurations.		\checkmark (Version 3.0)
-* CMake 2.8.6 or newer is required for configurations that include CISM.	\checkmark (Version 2.8.12.2)
+* pnetcdf 1.2.0 is required and 1.3.1 is recommended        ??? 
+* Trilinos may be required for certain configurations        X
+* LAPACKm or a vendor supplied equivalent may also be required for some configurations.                \checkmark (Version 3.0)
+* CMake 2.8.6 or newer is required for configurations that include CISM.        \checkmark (Version 2.8.12.2)
 
 ## Quickstart
 This Quickstart should give an overview about te workflow of CESM especially when there is already a version ported to the local target machine. If there is nothing already portet on the start machine, start with the more detailled description below.
 
 There are a couple of definitions which must be unterstand and lead you through this section
 
-	$COMPSET refers to the components set
-	$RES refers to the model resolution
-	$MACH refers to the target machine
-	$CCSMROOT refers to the CESM root directory
-	$CASE refers to the case name
-	$CASEROOT refers to the full pathname of the root directory where the case ($CASE) will be created
-	$EXEROOT refers to the executable directory ($EXEROOT is normally __not__ the same as $CASEROOT)
-	$RUNDIR refers to the directory where CESM actually runs. This is normally set to $EXEROOT/run. (changing $EXEROOT does not change $RUNDIR as these are independent variavles)
+        $COMPSET refers to the components set
+        $RES refers to the model resolution
+        $MACH refers to the target machine
+        $CCSMROOT refers to the CESM root directory
+        $CASE refers to the case name
+        $CASEROOT refers to the full pathname of the root directory where the case ($CASE) will be created
+        $EXEROOT refers to the executable directory ($EXEROOT is normally __not__ the same as $CASEROOT)
+        $RUNDIR refers to the directory where CESM actually runs. This is normally set to $EXEROOT/run. (changing $EXEROOT does not change $RUNDIR as these are independent variavles)
 
 As first step you need to [download(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/usersguide/x290.html) CESM and select a machine, a component set and a resolution form the list displayed after using this commands:
-	
-	> cd $CCSMROOT/scripts
-	> create_newcase -list
+        
+        > cd $CCSMROOT/scripts
+        > create_newcase -list
 There is a list CESM supported CESM components like [sets(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/compsets.html), [resolution(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/grid.html) and [machines(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/machines.html).
 To create a case the command `create_newcase` is used. It creates a case directory containing the scripts and xml files to set up the configurations for resolution, component set and machine requested. The `create_newcase` has some arguments as condition and some additional options for generic machines. For more information `create_newcase -h` should help.
 I case that a supported machine is in use `($MACH)` tipe the following words:
 
-	>create_newcase -case $CASEROOT \
-		-mach $MACH \
-		-compset $COMPSET \
-		-res $RES
+        >create_newcase -case $CASEROOT \
+                -mach $MACH \
+                -compset $COMPSET \
+                -res $RES
 
 For running a new target machine use the __section below__.
 
 To setup the case run script be sure to use the `cesm_setup` command which creates a $CASEROOT/$CASE.run script with `user_nl_xxx` files, while the xxx tell us something about the case configuration. But before running `cesm_setup` there is the `env_mach_pes.xml` file in $CASEROOT to be modified fitting to the experiment to be run.
-	
-	> cd $CASEROOT
+        
+        > cd $CASEROOT
 
 After this the `env_mach_pes.xml` can be modified with the ___xmlchange___ command. Take a look at `xmlchange -h` for detailed information. Then the `cesm_setup` can be initiated.
 
-	> ./cesm_setup
+        > ./cesm_setup
 
 With the optional build modifications in mind (`env_mach_pes.xml`) the build script can be startet:
 
-	> $CASE.build
+        > $CASE.build
 
 To run the case and maybe setting the variable $DOUT_S in `env_mach_pes.xml` to `false` the job can be submitted to the batch queue:
 
-	> $CASE.submit
+        > $CASE.submit
 
 After the job finished you can review all the following directories and files like:
 
-	1. $RUNDIR
-	  * the directory set in the `env_build.xml` file
-	  * the location where the CESM was run with logfiles for every part
-	2. $CASEROOT/logs
-	  * if the run was successful the log files have been copied into this directory
-	3. $CASEROOT
-	  * here should a standard out or error file
-	4. CASEROOT/CaseDocs
-	  * a list a casenames is copied to this directory
-	5. CASEROOT/timing
-	  * here are timing files which are representing the performance of the model
-	6. $DOUTS_S_ROOT/$CASE
-	  * This directory is an archive depending on the setting done above, while it is true there is a log and history
+        1. $RUNDIR
+          * the directory set in the `env_build.xml` file
+          * the location where the CESM was run with logfiles for every part
+        2. $CASEROOT/logs
+          * if the run was successful the log files have been copied into this directory
+        3. $CASEROOT
+          * here should a standard out or error file
+        4. CASEROOT/CaseDocs
+          * a list a casenames is copied to this directory
+        5. CASEROOT/timing
+          * here are timing files which are representing the performance of the model
+        6. $DOUTS_S_ROOT/$CASE
+          * This directory is an archive depending on the setting done above, while it is true there is a log and history
 
 ## Installation
 - Open source
@@ -151,34 +151,39 @@ Files in the subdirectory of the `$DIN_LOCK_ROOT` should be write-protected to e
 As we are executing our CESM executable there is the utility `check_input_data` which is called to locate all the needed input data for a certain case. When this data is not found in `$DIN_LOCK_ROOT` it will automatically be downloaded by the scripts or the user using the `check_input_data` with -export as command argument.
 If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcomands direct, but it is much better to use the `check_input_data` script as it secures to download only the required data.
 
-## CESM Creating And Configure A Case
+## CESM Creating And Configure A New Case
+
 As we are executing our CESM executable there is the utility `check_input_data` which is called to locate all the needed input data for a certain case.
 When this data is not found in `$DIN_LOCK_ROOT` it will automatically be downloaded by the scripts or the user using the `check_input_data` with -export as command argument.
 If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcomands direct, but it is much better to use the `check_input_data` script as it secure to download only the required data.
-	
-### Getting data
-The data download script lies in `cesm1_2_1/scripts/ccsm_utils/Tools`.
-To download input data to a specific data directory execute this, with an adjusted path.
-	
-         export DIN_LOC_ROOT='/Path/to/input/data/dir'
-         mkdir -p $DIN_LOC_ROOT
-        ./check_input_data -inputdata $DIN_LOC_ROOT -export -datalistdir $DIN_LOC_ROOT       
-
 
 ### Create a new case
 Cases are pretty much a thing. But we don't know what they are...
 To create a case execute `./scripts/create_newcase` with correct parameters, e.g.:
 
         # Parameters are respectively:
-        # Case name
+        # Case name and location if you don't want to make it locally
         # Machine name
         # Component set name
         # Resolution
         ./create_newcase -case test1 \
-            -mach userdefined  \
+            -mach bluewaters  \
             -compset B1850CN  \
             -res f45_g37
 
+This may lead to an error in line 448 of the CaseConfig.pm which is having a problem with `qw()`. This function can lead to problems. Manually making a quoted word list and remove the qw could help.
+The text `Successfully created the case` should appear on your screen.
+
+In case create_newcase breaks while calling one of the `mkbatch.*` scripts, you propably need to install CShell, as those scripts are written for `#!/bin/csh`.
+
+
+### Getting data
+The data download script lies directly in `cesm1_2_1/scripts/"yourcase"` you created one step back.
+To download input data to a specific data directory execute this, with an adjusted path.
+        
+         export DIN_LOC_ROOT='/Path/to/input/data/dir'
+         mkdir -p $DIN_LOC_ROOT
+        ./check_input_data -inputdata $DIN_LOC_ROOT -export -datalistdir $DIN_LOC_ROOT       
 
 # Conclusion
 EDEX & CAVE are supported by the U.S. company Raytheon.
