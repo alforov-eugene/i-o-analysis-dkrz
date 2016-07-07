@@ -1,7 +1,7 @@
 .PHONY: default, pdf, open, clean
 
 name=presentation
-sheet=presentation
+sheet=main
 
 default: open
 
