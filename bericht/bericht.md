@@ -19,7 +19,7 @@ bla bla bla jeder kann sich an dem Paper schnell und effektive bedienen
 # IFS - Integrated Forecasting System
 
 ## About IFS
-IFS is a Model by European Centre for Medium-range Weather Forecast (ECMWF) which is used to make analysis of data. This data can be a variety of different physical bulks.
+IFS is a Model by European Center for Medium-range Weather Forecast (ECMWF) which is used to make analysis of data. This data can be a variety of different physical bulks.
 This model looked quite promising as they offered an OpenIFS version of the model.
 After some research we discovered that the license forbids "Commercial and benchmarking use of OpenIFS models", which stopped us from further investigation.
 I would recommend to use this model in a research or academic context, as there is plenty of documentation and a big user base.
@@ -27,12 +27,12 @@ I would recommend to use this model in a research or academic context, as there 
 
 # Unidata - Awips2
 
-AWIPS2 is a package which contains weather forecast display and analysis. This open-source java application consists of EDEX a data server and CAVE the client for data analysis and rendering. 
+AWIPS2 is a package which contains weather forecast display and analysis. This open-source `Java` application consists of `EDEX` a data server and CAVE the client for data analysis and rendering. 
 
 ## Installation
-For the installation of awips2 ones can easily download the repository from github and make it run with `installCave.sh` and `installEDEX.sh`. Those install scripts use yum as a package manager are currently supported for CentOS, Fedora and RedHead.
+For the installation of `Awips2` ones can easily download the repository from Github and make it run with `installCave.sh` and `installEDEX.sh`. Those install scripts use yum as a package manager are currently supported for CentOS, Fedora and RedHead.
 To make it compatible for the cluster there is maybe more to be done. Awips2 is normally installed with the help of the package manger YUM which could lead to some problems if you' re not the root. 
-Awips2 requires a directory at root location "/awips2/". There are about 2000 lines of code where "/awips2/" is hardcoded, so switching directories is not an option.
+Awips2 requires a directory at root location "/awips2/". There are about 2000 lines of code where "/awips2/" is hard-coded, so switching directories is not an option.
 
 **To build** a version for our purpose it would be the best to have a EDEX on the cluster which is providing our local CAVE with data for visualization.
 
@@ -144,10 +144,10 @@ Most parts of the CESM software project are open source. However three libraries
 ## Input Data Set
 ### Setup
 There is actually a set of input data which can be downloaded and configured for CESM. It can be made available through another Subversion input data repository by using the same user name as used in the installation above.
-The dataset is around 1 TByte big and should not be downloaded at ones. The download is regulated on demand, so if CESM needs the particular data it will be downloaded and checked automatically be CESM itself. The data should be on a disk in the local area.
+The dataset is around 1 TB big and should not be downloaded at ones. The download is regulated on demand, so if CESM needs the particular data it will be downloaded and checked automatically be CESM itself. The data should be on a disk in the local area.
 The CESM variable `$DIN_LOCK_ROOT` has to be set inside of the script. Multiple users can use the same `$DIN_LOCK_ROOT` directory and should be configured as group writable.
 If the machine is supported there is a preset otherwise there is a possibility to make it also run on generic machines with the variable as argument for the `./scripts/create_newcase` script .
-Files in the subdirectory of the `$DIN_LOCK_ROOT` should be write-protected to exclude accidentally deleting or changeing of them. 
+Files in the subdirectory of the `$DIN_LOCK_ROOT` should be write-protected to exclude accidentally deleting or changing of them. 
 As we are executing our CESM executable there is the utility `check_input_data` which is called to locate all the needed input data for a certain case. When this data is not found in `$DIN_LOCK_ROOT` it will automatically be downloaded by the scripts or the user using the `check_input_data` with -export as command argument.
 If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcommands direct, but it is much better to use the `check_input_data` script as it secures to download only the required data.
 
@@ -155,7 +155,12 @@ If ones like to download the input manually it should be done __before__ buildin
 
 As we are executing our CESM executable there is the utility `check_input_data` which is called to locate all the needed input data for a certain case.
 When this data is not found in `$DIN_LOCK_ROOT` it will automatically be downloaded by the scripts or the user using the `check_input_data` with -export as command argument.
-If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via svn subcommands direct, but it is much better to use the `check_input_data` script as it secure to download only the required data.
+If ones like to download the input manually it should be done __before__ building CESM. In addition it is also possible to download the data via SVN subcommands direct, but it is much better to use the `check_input_data` script as it secure to download only the required data.
+
+### Prerequisites
+
+CESM needs two directories in root `/`.
+`/scratch` and `/lustre`. Those paths are hard-coded in many scripts and not easily removable.
 
 ### Create a new case
 Cases are pretty much a thing. But we don't know what they are...
@@ -166,15 +171,21 @@ To create a case execute `./scripts/create_newcase` with correct parameters, e.g
         # Machine name
         # Component set name
         # Resolution
-        ./create_newcase -case ./test1 \
+        /create_newcase -case ./test1 \
             -mach bluewaters  \
             -compset B1850CN  \
             -res f45_g37
 
-This may lead to an error in line 448 of the CaseConfig.pm which is having a problem with `qw()`. This function can lead to problems. Manually making a quoted word list and remove the qw could help.
+In the original repository many errors occur due to deprecated syntax and buggy setup code. We recommend to use our updated version of the code.
 The text `Successfully created the case` should appear on your screen.
 
 In case create_newcase breaks while calling one of the `mkbatch.*` scripts, you probably need to install CShell, as those scripts are written for `#!/bin/csh`.
+
+### Setup case
+
+Once a case has been created by the previous command, the setup for case has to be completed.
+To achieve this, the `cesm_setup` script in the case directory needs to be executed.
+Settings for this specific case are specified in `env_mach_pes.xml`. The documentation states that this file should only be manipulated using `xmlchange`.
 
 
 ### Getting data
