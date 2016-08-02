@@ -172,7 +172,7 @@ To create a case execute `./scripts/create_newcase` with correct parameters, e.g
         # Component set name
         # Resolution
         /create_newcase -case ./test1 \
-            -mach bluewaters  \
+            -mach userdefined \
             -compset B1850CN  \
             -res f45_g37
 
@@ -186,6 +186,17 @@ In case create_newcase breaks while calling one of the `mkbatch.*` scripts, you 
 Once a case has been created by the previous command, the setup for case has to be completed.
 To achieve this, the `cesm_setup` script in the case directory needs to be executed.
 Settings for this specific case are specified in `env_mach_pes.xml`. The documentation states that this file should only be manipulated using `xmlchange`.
+As we want to use our own machine, we need to create a user defined machine for this test case.
+
+Values that need to be set:
+
+- `MAX_TASKS_PER_NODE` in `env_mach_pes.xml`
+- `OS` in `env_build.xml`
+- `MPILIB` in `env_build.xml`
+- `COMPILER` in `env_build.xml`
+- `EXEROOT` in `env_build.xml`
+- `RUNDIR` in `env_run.xml`
+- `DIN_LOC_ROOT` in `env_run.xml`
 
 
 ### Getting data
