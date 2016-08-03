@@ -197,6 +197,7 @@ Values that need to be set:
 - `RUNDIR` in `env_run.xml`
 - `DIN_LOC_ROOT` in `env_run.xml`
 
+There is an example configuration in `scripts/example_config`. This configuration expects a folder in root `/cesm` and `/cesm/inputdata`, but if you don't have root access at your location, those variables can be easily changed (`EXEROOT`, `RUNDIR`, `DIN_LOC_ROOT`)
 
 ### Getting data
 The data download script lies directly in `cesm1_2_1/scripts/"yourcase"` you created one step back.
