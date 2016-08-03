@@ -177,6 +177,7 @@ To create a case execute `./scripts/create_newcase` with correct parameters, e.g
 
 In the original repository many errors occur due to deprecated syntax and buggy setup code. We recommend to use our updated version of the code.
 The text `Successfully created the case` should appear on your screen.
+Will the problem with `create_newcase`remain, once should try one of the examples listed in the error message.
 
 In case create_newcase breaks while calling one of the `mkbatch.*` scripts, you probably need to install CShell, as those scripts are written for `#!/bin/csh`.
 
