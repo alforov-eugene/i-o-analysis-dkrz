@@ -179,7 +179,7 @@ In the original repository many errors occur due to deprecated syntax and buggy 
 The text `Successfully created the case` should appear on your screen.
 Will the problem with `create_newcase`remain, once should try one of the examples listed in the error message.
 
-In case create_newcase breaks while calling one of the `mkbatch.*` scripts, you probably need to install CShell, as those scripts are written for `#!/bin/csh`.
+In case `create_newcase` breaks while calling one of the `mkbatch.*` scripts, you probably need to install CShell, as those scripts are written for `#!/bin/csh`.
 
 ### Setup case
 
@@ -199,6 +199,12 @@ Values that need to be set:
 - `DIN_LOC_ROOT` in `env_run.xml`
 
 There is an example configuration in `scripts/example_config`. This configuration expects a folder in root `/cesm` and `/cesm/inputdata`, but if you don't have root access at your location, those variables can be easily changed (`EXEROOT`, `RUNDIR`, `DIN_LOC_ROOT`)
+
+### Build case
+
+To build a case, the `$CASENAME.build` script needs to be executed.
+In case you chose the `gnu` compiler in your settings, make sure you have `gmake` installed and create a symlink `gmake` to `make`.
+If any previous builds failed, `$CASENAME.clean_build` has to be executed.
 
 ### Getting data
 The data download script lies directly in `cesm1_2_1/scripts/"yourcase"` you created one step back.
