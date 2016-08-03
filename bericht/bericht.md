@@ -159,8 +159,7 @@ If ones like to download the input manually it should be done __before__ buildin
 
 ### Prerequisites
 
-CESM needs two directories in root `/`.
-`/scratch` and `/lustre`. Those paths are hard-coded in many scripts and not easily removable.
+We need the `perl-switch` for the project setup.
 
 ### Create a new case
 Cases are pretty much a thing. But we don't know what they are...
