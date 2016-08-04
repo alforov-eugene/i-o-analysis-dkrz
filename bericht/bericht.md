@@ -220,6 +220,14 @@ To download input data to a specific data directory execute this, with an adjust
 	  ./cesm_setup
 	  ./EXAMPLE_CASE.build
 
+# Lifecycle of data
+
+## General
+
+## Details
+
+## Summary
+
 # Conclusion
 EDEX & CAVE are supported by the U.S. company Raytheon.
 
