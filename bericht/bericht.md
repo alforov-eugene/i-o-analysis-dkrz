@@ -40,7 +40,10 @@ Awips2 requires a directory at root location "/awips2/". There are about 2000 li
 
 ## About CESM
 CESM itself consists of seven geophysical models like ocean, land, ice, atmosphere ... . The CESM project is made and supported by U.S. climate researchers and mainly by the National Science Foundation (NSF).
+If there are different models in use, a so called coupler handle the time progression and overall management between coupled systems through sequences of communication.
 The scientific development is conducted by the CESM working group twice a year. For more information related to the development its recommended to visit the website [link to source].
+Additional CESM can be most of the time run out-of-the-box the developers claiming. "Bit-for-bit reproducibility" cannot be guarnteed, because of using different compilers and system versions.
+
 
 ## Requirements
 Here are some preconditions directly taken from the documentation of CESM.
@@ -53,7 +56,7 @@ In favour to make it run on the cluster we are working with we have to walk thro
 * MPI (although CESM does not absolutely require it for running on one processor)        \checkmark
 * NetCDF 4.2.0 or newer.        \checkmark (Version 7.3 & 4.2)
 * ESMF 5.2.0 or newer (optional).
-* pnetcdf 1.2.0 is required and 1.3.1 is recommended        ??? 
+* pnetcdf 1.2.0 is required and 1.3.1 is recommended (optional) 
 * Trilinos may be required for certain configurations        X
 * LAPACKm or a vendor supplied equivalent may also be required for some configurations.                \checkmark (Version 3.0)
 * CMake 2.8.6 or newer is required for configurations that include CISM.        \checkmark (Version 2.8.12.2)
@@ -76,7 +79,9 @@ As first step you need to [download(Link)](http://www.cesm.ucar.edu/models/cesm1
         
         > cd $CCSMROOT/scripts
         > create_newcase -list
-There is a list CESM supported CESM components like [sets(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/compsets.html), [resolution(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/grid.html) and [machines(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/machines.html).
+There is a list CESM supported components like [sets(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/compsets.html), [resolution(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/grid.html) and [machines(Link)](http://www.cesm.ucar.edu/models/cesm1.2/cesm/doc/modelnl/machines.html).
+Remember, that the `-list` will always provide a list of supported component sets for the local CESM version.
+The first letters of the `-compset` option will indicate which kind of model is used.
 To create a case the command `create_newcase` is used. It creates a case directory containing the scripts and XML files to set up the configurations for resolution, component set and machine requested. The `create_newcase` has some arguments as condition and some additional options for generic machines. For more information `create_newcase -h` should help.
 I case that a supported machine is in use `($MACH)` tipe the following words:
 
@@ -85,6 +90,8 @@ I case that a supported machine is in use `($MACH)` tipe the following words:
                 -compset $COMPSET \
                 -res $RES
 
+When using the machine setting `userdefined` it is requiered to edit the resulting xml files and fill them with the informations needed for the target machine.
+The `create_newcase -list` command will also show all available machines for the local version.
 For running a new target machine use the __section below__.
 
 To setup the case run script be sure to use the `cesm_setup` command which creates a $CASEROOT/$CASE.run script with `user_nl_xxx` files, while the xxx tell us something about the case configuration. But before running `cesm_setup` there is the `env_mach_pes.xml` file in $CASEROOT to be modified fitting to the experiment to be run.
@@ -180,6 +187,29 @@ The text `Successfully created the case` should appear on your screen.
 Will the problem with `create_newcase`remain, once should try one of the examples listed in the error message.
 
 In case `create_newcase` breaks while calling one of the `mkbatch.*` scripts, you probably need to install CShell, as those scripts are written for `#!/bin/csh`.
+
+The result of `create_newcase` is a directory `.../cesm/scripts/<YourCase>` with a bunch of directorys or filenames to be explained:
+
+	README.case	- This files will contain tracked problems and changes at runtime
+	CaseStatus	- A File containing a history of operations done in the actual case
+	BuildConf/	- A never have to be edit directory with scripts for generating component namelists and utility libraries
+	SourceMods/	- This directory is for modified source code
+	LockedFiles/	- It contains copies of files that should not be changed, xml are locked until the clean operation is executed
+	Tools/		- A never have to be edit location with support scripts
+	env_mach_specific	- machine-specific variables for building/running are set here
+	env_case.xml	- Case specific variables like the root and models are set(cannot be changed, have to re-run create_newcase for changes)
+	env_build.xml	- contains the building settings, resolution and configuration options
+	env_mach_pers.xml	- sets the machine processor layout
+	env_run.xml	- contains run-time settings
+	cesm_setup	- script for set up
+	$CASE.$MACH.build	- script for building components, executables and utility libraries
+	$CASE.$MACH.clean_build	- remove all object files and libraries
+	$CASE.$MACH.l_archive	- script for long-term archiving of output (only if it is available on the machine)
+	xmlchange	- utility to change values in other .xml files
+	preview_namelists	- utility to see the component namelists
+	check_input_data	- check for input datasets
+	check_production_test	- creates a test of the owners case
+
 
 ### Setup case
 
