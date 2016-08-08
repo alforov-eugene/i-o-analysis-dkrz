@@ -244,6 +244,16 @@ To download input data to a specific data directory execute this, with an adjust
          mkdir -p $DIN_LOC_ROOT
         ./check_input_data -inputdata $DIN_LOC_ROOT -export -datalistdir $DIN_LOC_ROOT  
 
+Now it also should be possible to check if the requiered data is present with follow command:
+
+	check_input_data -inputdata $DIN_LOC_ROOT -check
+
+To download missing data from the server use:
+
+	check_input_data -inputdata $DIN_LOC_ROOT -export
+
+Booth commands need to be run inside the `$CASEROOT`
+
 ### Build the Case
 
 	  cd ~/cesm/EXAMPLE_CASE
