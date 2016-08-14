@@ -299,7 +299,21 @@ storing.
 
 ### Analyzing of data
 
+Because data itself is not very enlightening, especially when there are thousands of values we need methods to interpret them. Derivation of data while calculating the output of the research and making publications is another part. Now that the made our main calculations with the data we have to prepare it for preservation.
 
+### Preserving of data
+
+Preserving of data is about checking out the best formats and best mediums on which we backup and store the data. Also creation of metadata and documentation is important for
+the final archiving.
+
+### Giving access to data
+
+Because reseach is done mostly by public institutes there is a demand for sharing and distribute the data and knowledge. To consider about the access control and copyrights
+might also be very useful.
+
+### Re-using data
+
+Researches in the future could also be based on the work which is done before. Teaching and learning can also be a result of re-using.
 
 ## Details
 
