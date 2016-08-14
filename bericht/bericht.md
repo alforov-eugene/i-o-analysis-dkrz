@@ -263,12 +263,43 @@ Booth commands need to be run inside the `$CASEROOT`
 # ECOHAM5
 
 ## About
+ECHAM is a model for atmospheric circulation, which was developed by the Max Planck Institute for Meteorology. It's a important part of the MPI-ESM which is the 
+Earth system model of the Max Planck Institute. ECHAM itself is branched in year 1987 from the global numerical weather predicition model by ECMWF. Ever scince its developed by Max Planck Institute.
+
+## Getting Started
+
+### Source Code
+The [Code for ECHAM6](http://www.mpimet.mpg.de/en/science/models/license/) might be available here.
 
 
 
 # Lifecycle of data
 
 ## General
+Through the whole process of running a simulation there a different type of data at certain points. The complexity and the information can differ.
+The data which is fed into the program at the beginning won't be the same which is visualized by a color on the climate overview
+
+The Lifecycle could be divided into those parts:
+
+1. creating data
+2. processing data
+3. analyzing data
+4. preserving data
+5. giving access to data
+6. re-using data
+
+### Creating the data
+
+Creating the data could be also named as design of the research because it will limit and lead the handling of the application. Which kind of data management, formats and storage used is another question to be answered. If there are already similar simulations, data can be found there for re-use. For not already exsisting simulation the data must be collected through experiments, measures and also simulations generation data. Metadata will also be captured and maybe created.
+
+### Processing data
+
+This step will contain the digitization, transcribing and translation of data into a useful figure. It also is about the vetting of validate and clean data. To anonymize data where it is needed could also be part of processing. To make it easy to read for other people, the data should be described. As the last step it is nescessary to manage the 
+storing.
+
+### Analyzing of data
+
+
 
 ## Details
 
@@ -285,3 +316,4 @@ http://www.cesm.ucar.edu/models/current.html
 http://www2.cesm.ucar.edu/
 http://www.ecmwf.int/en/forecasts/
 http://www.unidata.ucar.edu/software/awips2/
+https://www.bu.edu/datamanagement/background/data-life-cycle/  Data Lifecycle
