@@ -39,6 +39,8 @@ Awips2 requires a directory at root location "/awips2/". There are about 2000 li
 
 **To build** a version for our purpose it would be the best to have a EDEX on the cluster which is providing our local CAVE with data for visualization.
 
+\pagebreak
+
 # CESM - Community Earth System Model
 
 ## About CESM
@@ -303,9 +305,11 @@ The Lifecycle could be divided into those parts:
 Creating the data could be also named as design of the research because it will limit and lead the handling of the application. Which kind of data management, formats and storage used is another question to be answered. If there are already similar simulations, data can be found there for re-use. For not already exsisting simulation the data must be collected through experiments, measures and also simulations generation data. Metadata will also be captured and maybe created.
 
 ### Processing data
-
 This step will contain the digitization, transcribing and translation of data into a useful figure. It also is about the vetting of validate and clean data. To anonymize data where it is needed could also be part of processing. To make it easy to read for other people, the data should be described. As the last step it is nescessary to manage the 
 storing.
+
+#### Pre-Processing
+TODO
 
 ### Analyzing of data
 
