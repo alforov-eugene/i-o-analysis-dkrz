@@ -32,7 +32,6 @@ I would recommend to use this model in a research or academic context, as there 
 
 AWIPS2 is a package which contains weather forecast display and analysis. This open-source `Java` application consists of `EDEX` a data server and CAVE the client for data analysis and rendering. 
 
-AWIPS2: 
 ![alt text][/pics/awips2_coms.png]
 
 ## EDEX (Environmental Data EXchange )
@@ -41,7 +40,8 @@ AWIPS2:
 The first source for data is the LDM the Local Data Manager as a piece of software to share data with computers in other networks. The LDM can handle diffrent kinds of data from National Weather Service data stream to
 radar data, satellit images and grid data from numerical forecast models. The data could be get directly from the source or a LDM can communicate with another LDM.
 When the LDM received data inside the EDEX, there is a message being send to the **Qipd** which is the Apache Queue Processor Interface Daemon spreading the the availabilty of a data ready from processing.
-EDEX can decode the data to make it ready for additional processing or telling CAVE that it is available for displaying.
+EDEX can decode the data to make it ready for additional processing or telling CAVE that it is available for displaying. All of those messages are communicated via **edexBridge**
+
 
 ## CAVE (Common AWIPS Visualization Environment)
 **CAVE** as a part of Awips2 is a tool for data visualisation and rendering. Its normaly installed on a seperated workstation apart from the other AWIPS2 parts.  
