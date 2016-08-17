@@ -13,8 +13,10 @@ Further we look at the absolute bare minimum of data required by those models.
 With intent to get an overview about the richness of climate,land,ice, weather and ocean models we took a look at some in depth to work out that the approachability and documentation was not that clear.
 Tons of very old models passed our way of searching through the sides of got dusty projects and source code. The question than was to get an good overview of up to date and easy to handle models which are still supported and updated.
 
-## How we want to help
-bla bla bla jeder kann sich an dem Paper schnell und effektive bedienen
+## Our goal
+With this paper we want to give a good overview about some climate models we found in the internet ... and the general lifecycle of data.
+
+\pagebreak
 
 # IFS - Integrated Forecasting System
 
@@ -24,6 +26,7 @@ This model looked quite promising as they offered an OpenIFS version of the mode
 After some research we discovered that the license forbids "Commercial and benchmarking use of OpenIFS models", which stopped us from further investigation.
 I would recommend to use this model in a research or academic context, as there is plenty of documentation and a big user base.
 
+\pagebreak
 
 # Unidata - Awips2
 
@@ -31,7 +34,7 @@ AWIPS2 is a package which contains weather forecast display and analysis. This o
 
 ## Installation
 For the installation of `Awips2` ones can easily download the repository from Github and make it run with `installCave.sh` and `installEDEX.sh`. Those install scripts use yum as a package manager are currently supported for CentOS, Fedora and RedHead.
-To make it compatible for the cluster there is maybe more to be done. Awips2 is normally installed with the help of the package manger YUM which could lead to some problems if you' re not the root. 
+To make it compatible for the cluster there is maybe more to be done. Awips2 is normally installed with the help of the package manager YUM which could lead to some problems if you' re not the root. 
 Awips2 requires a directory at root location "/awips2/". There are about 2000 lines of code where "/awips2/" is hard-coded, so switching directories is not an option.
 
 **To build** a version for our purpose it would be the best to have a EDEX on the cluster which is providing our local CAVE with data for visualization.
@@ -271,7 +274,7 @@ Earth system model of the Max Planck Institute. ECHAM itself is branched in year
 ### Source Code
 The [Code for ECHAM6](http://www.mpimet.mpg.de/en/science/models/license/) might be available here.
 
-
+## Compile ECOHAM
 
 # Lifecycle of data
 
