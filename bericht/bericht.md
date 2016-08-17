@@ -274,7 +274,14 @@ Earth system model of the Max Planck Institute. ECHAM itself is branched in year
 ### Source Code
 The [Code for ECHAM6](http://www.mpimet.mpg.de/en/science/models/license/) might be available here.
 
-## Compile ECOHAM
+### Compile ECOHAM
+To compile ECOHAM for a testcase, there is the following script to be run:
+
+	./CompileJob-cluster.sh TEST 0  // for just the compiling
+	./CompileJob-cluster.sh TEST 1	// for compiling and make it ready to run
+	./CompileJob-cluster.sh TEST 2	// compiling and run the model
+
+In our case `TEST` is the data input. If an error occures and you don't have the permission to run `sbatch` on a specified partiotions, it is nessecarry to make modification in the `RunJob.TEST` located in the folder of the declared input. The wrk directory will contain the models ouput. 
 
 # Lifecycle of data
 
