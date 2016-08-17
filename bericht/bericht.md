@@ -1,4 +1,4 @@
-% I/O analysis of climate applications 
+%I/O analysis of climate applications 
 % Arne Beer, MN 6489196, Frank Röder, MN 6526113
 
 \pagebreak
@@ -31,6 +31,20 @@ I would recommend to use this model in a research or academic context, as there 
 # Unidata - Awips2
 
 AWIPS2 is a package which contains weather forecast display and analysis. This open-source `Java` application consists of `EDEX` a data server and CAVE the client for data analysis and rendering. 
+
+AWIPS2: 
+![alt text][/pics/awips2_coms.png]
+
+## EDEX (Environmental Data EXchange )
+**EDEX** is the server for AWIPS2 which is used mainly for preparing the data for CAVE. Their are different the server is containing of.
+
+The first source for data is the LDM the Local Data Manager as a piece of software to share data with computers in other networks. The LDM can handle diffrent kinds of data from National Weather Service data stream to
+radar data, satellit images and grid data from numerical forecast models. The data could be get directly from the source or a LDM can communicate with another LDM.
+When the LDM received data inside the EDEX, there is a message being send to the **Qipd** which is the Apache Queue Processor Interface Daemon spreading the the availabilty of a data ready from processing.
+EDEX can decode the data to make it ready for additional processing or telling CAVE that it is available for displaying.
+
+## CAVE (Common AWIPS Visualization Environment)
+**CAVE** as a part of Awips2 is a tool for data visualisation and rendering. Its normaly installed on a seperated workstation apart from the other AWIPS2 parts.  
 
 ## Installation
 For the installation of `Awips2` ones can easily download the repository from Github and make it run with `installCave.sh` and `installEDEX.sh`. Those install scripts use yum as a package manager are currently supported for CentOS, Fedora and RedHead.
@@ -339,6 +353,7 @@ EDEX & CAVE are supported by the U.S. company Raytheon.
 bla bla bla nice project.
 
 # References
+https://www.unidata.ucar.edu/software/ldm/ldm-current/factsheet.html
 
 http://www.cesm.ucar.edu/models/current.html
 http://www2.cesm.ucar.edu/
