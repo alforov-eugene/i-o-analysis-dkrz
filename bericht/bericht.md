@@ -32,7 +32,7 @@ I would recommend to use this model in a research or academic context, as there 
 
 AWIPS2 is a package which contains weather forecast display and analysis. This open-source `Java` application consists of `EDEX` a data server and CAVE the client for data analysis and rendering. 
 
-![alt text](pics/awips2_coms.png "AWIPS2 Figure")
+![AWIPS2 System](pics/awips2_coms.png "AWIPS2 Figure")
 
 ## EDEX (Environmental Data EXchange )
 **EDEX** is the server for AWIPS2 which is used mainly for preparing the data for CAVE. There are different parts the server is containing of.
@@ -54,8 +54,10 @@ only processes the requests related to the HDF5 files. The intention was to isol
 ## CAVE (Common AWIPS Visualization Environment)
 **CAVE** as a part of Awips2 is a tool for data visualisation and rendering. Its normaly installed on a seperated workstation apart from the other AWIPS2 parts.  
 
+![CAVE Example](pics/Unidata_AWIPS2_CAVE.png "CAVE Figure")
+
 ## Installation
-For the installation of `Awips2` ones can easily download the repository from Github and make it run with `installCave.sh` and `installEDEX.sh`. Those install scripts use yum as a package manager are currently supported for CentOS, Fedora and RedHead.
+For the installation of `Awips2` you can easily download the repository from Github and make it run with `installCave.sh` and `installEDEX.sh`. Those install scripts use yum as a package manager are currently supported for CentOS, Fedora and RedHead.
 To make it compatible for the cluster there is maybe more to be done. Awips2 is normally installed with the help of the package manager YUM which could lead to some problems if you' re not the root. 
 Awips2 requires a directory at root location "/awips2/". There are about 2000 lines of code where "/awips2/" is hard-coded, so switching directories is not an option.
 
