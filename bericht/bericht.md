@@ -32,15 +32,23 @@ I would recommend to use this model in a research or academic context, as there 
 
 AWIPS2 is a package which contains weather forecast display and analysis. This open-source `Java` application consists of `EDEX` a data server and CAVE the client for data analysis and rendering. 
 
-![alt text][/pics/awips2_coms.png]
+![alt text](pics/awips2_coms.png "AWIPS2 Figure")
 
 ## EDEX (Environmental Data EXchange )
-**EDEX** is the server for AWIPS2 which is used mainly for preparing the data for CAVE. Their are different the server is containing of.
+**EDEX** is the server for AWIPS2 which is used mainly for preparing the data for CAVE. There are different parts the server is containing of.
 
-The first source for data is the LDM the Local Data Manager as a piece of software to share data with computers in other networks. The LDM can handle diffrent kinds of data from National Weather Service data stream to
+The first source for data is the LDM the Local Data Manager as a piece of software to share data with computers in other networks. The LDM can handle different kinds of data from National Weather Service data stream to
 radar data, satellit images and grid data from numerical forecast models. The data could be get directly from the source or a LDM can communicate with another LDM.
-When the LDM received data inside the EDEX, there is a message being send to the **Qipd** which is the Apache Queue Processor Interface Daemon spreading the the availabilty of a data ready from processing.
+When the LDM received data inside the EDEX, there is a message being send to the **Qipd** which is the Apache __Queue Processor Interface Daemon__ spreading the the availabilty of a data ready for processing.
 EDEX can decode the data to make it ready for additional processing or telling CAVE that it is available for displaying. All of those messages are communicated via **edexBridge**
+The PostgreSQL or Postgres in short is relevant for the storage and the requests metadata, database tables and already decoded data. Postgres itself is a relational database 
+management system which reads and storage the EDEX metadata. The database size is not limited and it can handle 32 TB of database table capacity.
+
+HDF5 fully spelled Hierarchical Data Format (v.5) is the main format used in AWIPS2 to store processed grids, images and so on. It is nowadays very similar to netCDF, which is
+developed by Unidata. HDF5 can handle many different types just in one single file.
+
+The __Python Process Isolated Enhanced Storage__ PyPIES created just for AWIPS2 is used for the writes and reads of data in HDF5 files. It is very similar to the Postgre but it
+only processes the requests related to the HDF5 files. The intention was to isolate the EDEX from the HDF5 processes.
 
 
 ## CAVE (Common AWIPS Visualization Environment)
