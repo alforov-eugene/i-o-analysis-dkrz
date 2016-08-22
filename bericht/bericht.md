@@ -21,10 +21,23 @@ With this paper we want to give a good overview about some climate models we fou
 # IFS - Integrated Forecasting System
 
 ## About IFS
+IFS has been chosen to be the first model for our research.
 IFS is a Model by European Center for Medium-range Weather Forecast (ECMWF) which is used to make analysis of data. This data can be a variety of different physical bulks.
-This model looked quite promising as they offered an OpenIFS version of the model.
-After some research we discovered that the license forbids "Commercial and benchmarking use of OpenIFS models", which stopped us from further investigation.
-I would recommend to use this model in a research or academic context, as there is plenty of documentation and a big user base.
+ECMWF offers a semi open-source version of their model for research institutions, which is called OpenIFS. The source code of this model can be obtained by requesting a license for the institution one is working for.
+They provide a good documentation about their model, which cover instruction for building, running simulations as well as very detailed information about the mathematics and techniques used in their model.
+After some research and two weeks passed we discovered a passage in their license, which forbids "Commercial and benchmarking use of OpenIFS models". As our original research goal is some kind of benchmarking we were forced to stop and switch to another model.
+We still recommend to use this model in a research or academic context, as there is plenty of documentation and a big user base.
+
+
+# Further progress
+After the license incident with IFS we had to look for other open source models we could use for our research. We looked at many models in the following we will list some of the most promising:
+WRF, CFS, GDAS, GFS, GEFS, CM2.X, GISS GCM ModelE, CESM, MITgcm, GEOSCI, Hector v1.0, MAGICC/SCENGEN, Metview, COSMO, SAGA, MPI-ESM, ECOHAM
+
+The lookup for new models took about two weeks. Most of the models mentioned above had serious flaws which forbid us to use them in our research.
+Many of them have stopped being maintained many years ago.
+In some cases there was no license provided with no available support for clarifying legal questions. In other cases it was only possible to obtain a license for our specific research goal by buying it or it was even completely forbidden to use it for benchmarking purposes, as with OpenIFS.
+
+Eventually we decided to focus our work on Community Earth System Model (CESM) and Ecosystem model, Hamburg (ECOHAM). Further we decided to take a look at AWIPS2 a tool for displaying processed weather forecast data.
 
 \pagebreak
 
