@@ -54,110 +54,39 @@
 \section{Introduction}
 \begin{frame}
 	\frametitle{Introduction}
+\begin{itemize}
+	\item what climate models do
+	\item what is important about them
+	\item take a look at the workflow (especially pre- and post-processing)
+	\item take a look at storage systems
+	\item deliver knowledge about that
+\end{itemize}
 
-    \begin{itemize}
-		\item Why we use models
-		\begin{itemize}
-			\item simulations
-			\item another part of nowadays research
-		\end{itemize}
-	\end{itemize}
-
-	\begin{itemize}
-		\item Climate applications
-		\begin{itemize}
-			\item about the I/O
-			\item analysis
-			\item different Models
-			\item visualisation
-		\end{itemize}
-	\end{itemize}
 \end{frame}
 
+\subsection{Goals and Tasks}
 \begin{frame}
-    \frametitle{Motivation}
-    \begin{itemize}
-		\item models need huge amounts of data
-        \item data storage is limited and expensive
-        \item analyse models and evaluate needed data
-        \item prune as much data as possible
-	\end{itemize}
+	\frametitle{Goals and Tasks}
+	
+\begin{itemize}
+	\item try to run models
+	\item analyze their input and output
+	\item take a look at the live-cycle of data
+	\item deliver knowledge about that
+\end{itemize}
+
 \end{frame}
 
-\section{Models}
+\section{Models and Research}
 \begin{frame}
-    \frametitle{What are models}
+    \frametitle{The Models}
 
     \begin{itemize}
-		\item Climate Models
-		\begin{itemize}
-			\item a representation of climate
-			\item ocean, ice, land, river, vegetation
-			\item predict future climate
-			\item global scale
-		\end{itemize}
-		\item Atmospherical model
-		\begin{itemize}
-			\item numerical weather prediction
-			\item predict weather in a foreseeable period
-		\end{itemize}
+    	\item IFS
+	\item AWIPS II
+	\item CESM
+	\item ECHAM
     \end{itemize}
-
-\end{frame}
-
-
-\subsection{Input and Output}
-
-\begin{frame}[fragile]
-	\frametitle{Structure of the data}
-
-		\begin{itemize}
-		    \item numeric data
-			\item scalar quantities
-			\item vectors
-			\item grid data
-		\end{itemize}
-
-\end{frame}
-
-\subsection{File Format}
-
-\begin{frame}[fragile]
-	\frametitle{Most important formats used for climate applications}
-
-		\begin{itemize}
-			\item netCDF
-			\item HDF5
-			\item since version 4 netCDF is embedded in HDF5
-		\end{itemize}
-
-  \begin{figure}[htbp]
-    \begin{minipage}{0.35\textwidth}
-     \centering
-      \includegraphics[width=0.8\textwidth]{gfx/hdf.jpg}
-      \caption{hdf-logo \cite{hdf}}
-    \end{minipage}\hfill
-    \begin{minipage}{0.35\textwidth}
-     \centering
-      \includegraphics[width=0.8\textwidth]{gfx/netcdf.png}
-      \caption{netcdf-logo \cite{netcdf}}
-    \end{minipage}
-  \end{figure}
-
-\end{frame}
-
-
-\subsection{The model landscape}
-
-\begin{frame}
-    \frametitle{The model landscape}
-	\begin{itemize}
-		\item large choice
-		\item old models
-		\item poorly documented
-		\item nearly no open source
-		\item example IFS
-	\end{itemize}
 
 \end{frame}
 
@@ -171,24 +100,6 @@
 		\end{figure}
 	\end{center}
 
-\end{frame}
-
-\begin{frame}
-    \frametitle{Awips II}
-    	\begin{itemize}
-			\item forecast display and analysis
-			\item provides EDEX to store computed data \cite {AwipsDocs}
-	    	\begin{itemize}
-		    	\item HDF5 Storage
-		    	\item custom python libraries for storage management
-		    	\item PostgreSQL for metadata management and storage
-		    \end{itemize}
-		    \item Provides CAVE to display data
-	    	\begin{itemize}
-		    	\item program to connect with EDEX server
-		    	\item select data set, download and view it on your local machine
-		    \end{itemize}
-		\end{itemize}
 \end{frame}
 
 \section{CESM}
@@ -207,6 +118,15 @@
 		    \item requires netCDF format for input data \cite{CESMDocs}
 		\end{itemize}
 \end{frame}
+
+\subsection{Input and Output analysis}
+\begin{frame}[fragile]
+	\frametitle{I/O analysis}
+
+
+\end{frame}
+
+
 
 
 \section{Summary}
