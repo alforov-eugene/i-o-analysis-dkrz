@@ -323,6 +323,8 @@ To compile ECOHAM for a testcase, there is the following script to be run in dif
 	./CompileJob-cluster.sh TEST 2	// compiling and run the model
 
 In our case `TEST` is the data input. If an error occures and you don't have the permission to run `sbatch` on a specified partiotions, it is nessecarry to make modification in the `RunJob.TEST` located in the folder of the declared input. The wrk directory will contain the models ouput. 
+The directory `Input` inside the wrk folder contain all the input used for the model run. There are `.dat` `.header`and `.direct` files which are providing the application
+with all data needed.
 
 # Lifecycle of data
 
@@ -333,7 +335,7 @@ The data which is fed into the program at the beginning won't be the same which 
 The Lifecycle could be divided into those parts:
 
 1. creating data
-2. processing data
+2. processing data (pre- and post-processing included)
 3. analyzing data
 4. preserving data
 5. giving access to data
@@ -341,14 +343,14 @@ The Lifecycle could be divided into those parts:
 
 ### Creating the data
 
-Creating the data could be also named as design of the research because it will limit and lead the handling of the application. Which kind of data management, formats and storage used is another question to be answered. If there are already similar simulations, data can be found there for re-use. For not already exsisting simulation the data must be collected through experiments, measures and also simulations generation data. Metadata will also be captured and maybe created.
+Creating the data could also be named as design of the research because it will limit and lead the handling of the application. Which kind of data management, formats and storage used is another question to be answered. If there are already similar simulations, data can be found there for re-use. For not already exsisting simulation the data must be collected through experiments, measures and also simulations generation data. Metadata will also be captured and maybe created.
 
 ### Processing data
-This step will contain the digitization, transcribing and translation of data into a useful figure. It also is about the vetting of validate and clean data. To anonymize data where it is needed could also be part of processing. To make it easy to read for other people, the data should be described. As the last step it is nescessary to manage the 
-storing.
+This step will contain the digitization, transcribing and translation of data into a useful figure. It also is about the vetting of validate and clean data. To anonymize data needed could also be part of processing. Sometimes there is pre- and post-proscessing apart from the general processing. Pre-processing will prepare the particullar data
+just before a certain step. It will dimiss all the not needed information to save time and storage capacity. After such a step there could be another process called post-processing
+which is about the treatment of data to make it useable for other steps afterwards.
+To make it easy to read for other people, the data should be described and explained. As the last step it is nescessary to take a look at the storing of data.
 
-#### Pre-Processing
-TODO
 
 ### Analyzing of data
 
@@ -366,16 +368,21 @@ might also be very useful.
 
 ### Re-using data
 
-Researches in the future could also be based on the work which is done before. Teaching and learning can also be a result of re-using.
-
-## Details
+Researches in the future could also be based on the work which was done in the past. Teaching and publications may be good examples for re-using.
 
 ## Summary
 
-# Conclusion
-EDEX & CAVE are supported by the U.S. company Raytheon.
+With the growth of data in simulations and the improvement of processing power which is much higher than the performace of store power it is very essential for research establishments. The data and knowledge are the key and the only thing those institutes are working for. Therefore data and knowledge needs the right treatment.
 
-bla bla bla nice project.
+
+# Conclusion
+
+This project was about the analysis of input and output of climate applications. We made our way through run models providided by our supervisors and some we found in
+the internet which seemed suiteable for our purpose. We faced bad documentations and insufficient scripts for making such a model run. At the end we did not get along
+with most of them at different levels progress. ECHAM was the only one which worked on the fly, because of the test which is very well prepared. Apart of that it didn't keept us
+away from analysing the life-cycle of data in general and make a little summary about that.
+
+EDEX & CAVE are supported by the U.S. company Raytheon.
 
 # References
 https://www.unidata.ucar.edu/software/ldm/ldm-current/factsheet.html
