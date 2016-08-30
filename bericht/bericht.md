@@ -308,7 +308,7 @@ After the job finished you can review all the following directories and files li
 
 ## About
 ECHAM is a model for atmospheric circulation, which was developed by the Max Planck Institute for Meteorology. It's a important part of the MPI-ESM which is the 
-Earth system model of the Max Planck Institute. ECHAM itself is branched in year 1987 from the global numerical weather predicition model by ECMWF. Ever scince its developed by Max Planck Institute.
+Earth system model of the Max Planck Institute. ECHAM itself is branched in year 1987 from the global numerical weather prediction model by ECMWF. Ever scince its developed by Max Planck Institute.
 
 ## Getting Started
 
