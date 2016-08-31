@@ -65,12 +65,12 @@
 
 \subsection{Goals and Tasks}
 \begin{frame}
-	\frametitle{Goals and Tasks}
+	\frametitle{discover applications of climate system}
 
 \begin{itemize}
-	\item try to run models
+	\item run simulations of related models
 	\item analyze their input and output
-	\item take a look at the live-cycle of data
+	\item take a look at the life-cycle of data
 	\item deliver knowledge about that
 \end{itemize}
 
@@ -78,13 +78,13 @@
 
 \section{Models and Research}
 \begin{frame}
-    \frametitle{The Models}
+    \frametitle{Considered Climate Models}
 
     \begin{itemize}
     	\item IFS (Integrated Forecasting System)
 	\item AWIPS II
 	\item CESM (Community Earth System Model)
-	\item ECHAM
+	\item ECOHAM5 (ECOsystem Model Hamburg Version 5)
     \end{itemize}
 
 \end{frame}
@@ -93,6 +93,8 @@
 \begin{frame}
 	\frametitle{IFS}
 	\begin{itemize}
+	    \item provides OpenIFS \cite{ifs}
+	    \item global weather forecasting
 		\item well documented and maintained model
 		\item license forbids benchmarking
 	\end{itemize}
@@ -123,8 +125,9 @@
 \begin{frame}
     \frametitle{CAVE}
     \begin{itemize}
+        \item data analysis \cite{AwipsDocs} % For our research
         \item data storage % For our research
-        \item data analysis % For our research
+        \item using it for our research
 	\end{itemize}
 \end{frame}
 
@@ -146,26 +149,30 @@
     	\begin{itemize}
 		    \item fixed Broken setup scripts
 		    \item fails during compilation
-		    \item `pio'
+		    \begin{itemize}
+		        \item parallel IO library
+		    \end{itemize}
 		    \item no documentation
 		\end{itemize}
 \end{frame}
 
-\subsection{ECHAM}
+\subsection{ECOHAM5}
 \begin{frame}
-	\frametitle{ECHAM}
+	\frametitle{ECOHAM5}
 	\begin{itemize}
-		\item model for atmospheric circulation
+		\item model for atmospheric circulation \cite{echam}
 		\item developed by the Max Planck Institute for Meteorology
 		\item branched in year 1987 from the global numerical weather prediction model by ECMWF
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{ECHAM research status}
+	\frametitle{ECOHAM5 research status}
 	\begin{itemize}
-		\item Access granted two weeks ago
+		\item access granted two weeks ago
+		\item setup and compilation is very easy
 		\item running on cluster
+		\item no results due to limited time in exam period
 	\end{itemize}
 \end{frame}
 
@@ -187,7 +194,7 @@
 	\begin{itemize}
 		\item Models
 		\begin{itemize}
-			\item CESM, ECHAM
+			\item CESM, ECOHAM5
 			\item original research goal failed.
 			\item investigation of different models
 		\end{itemize}
