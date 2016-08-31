@@ -304,6 +304,18 @@ After the job finished you can review all the following directories and files li
           * here are timing files which are representing the performance of the model
         6. $DOUTS_S_ROOT/$CASE
           * This directory is an archive depending on the setting done above, while it is true there is a log and history
+
+## Conclusion
+
+We managed to fix the build scripts to create and setup a case. In the step of compiling the code we encountered a few errors, but we were able to compile two models. After that another error occurred during compilation of the `pio` module.
+CESM ships with a parallel IO library, which practically is a set of interfaces for netcdf, parallel netcdf or binary IO. We chose to use pnetcdf for our build.
+After installing the required libraries and setting the proper paths and variables as described in their documentation the build still failed and required a configuration file for `pio`. There is no further information about this configuration file in their documentation.
+After effectless writing their support we were forced to stop using CESM.
+
+After all CESM still looks like a promising model, but it has many flaws. Their build scripts aren't generic. Nearly 3 weeks were spent to understand the code and fix old syntax or hard-coded paths.
+If there were better documentation about the setup and compilation for CESM we could've probably used it, as we were really close to compiling it.
+
+
 # ECOHAM5
 
 ## About
