@@ -35,7 +35,7 @@
 \title{I/O analysis of climate applications}
 \author{Arne Beer \& Frank Röder}
 \institute{Arbeitsbereich Wissenschaftliches Rechnen\\Fachbereich Informatik\\Fakultät für Mathematik, Informatik und Naturwissenschaften\\Universität Hamburg}
-\date{2016-07-7}
+\date{$\text{2016-09-01}^{\text{st}}$}
 
 \titlegraphic{\includegraphics[width=0.75\textwidth]{gfx/logo}}
 
@@ -57,7 +57,7 @@
 \begin{itemize}
 	\item what climate models do
 	\item what is important about them
-	\item take a look at the workflow (especially pre- and post-processing)
+	\item take a look at the workflow (pre-/post-processing)
 	\item take a look at storage systems
 \end{itemize}
 
@@ -82,7 +82,11 @@
 
     \begin{itemize}
     	\item IFS (Integrated Forecasting System)
-	\item AWIPS II
+	\item AWIPS II (Advanced Weather Interactive Processing System II)
+	\begin{itemize}
+	    \item EDEX (Environmental Data EXchange)
+	    \item CAVE (Common AWIPS Visualization Environment)
+	\end{itemize}
 	\item CESM (Community Earth System Model)
 	\item ECOHAM5 (ECOsystem Model Hamburg Version 5)
     \end{itemize}
@@ -95,6 +99,8 @@
 	\begin{itemize}
 	    \item provides OpenIFS \cite{ifs}
 	    \item global weather forecasting
+	    \item biospheric and hydrological processes
+	    \item ocean wave, ocean, sea ice
 		\item well documented and maintained model
 		\item license forbids benchmarking
 	\end{itemize}
@@ -105,7 +111,7 @@
     \frametitle{Awips II}
     \begin{center}
     	\begin{figure}
-			\includegraphics[width=0.7\textwidth]{gfx/awipsII.png}
+			\includegraphics[width=0.85\textwidth]{gfx/awipsII.png}
       	  	\caption[]{Awips Infrastructure \cite{Uni01}}
 		\end{figure}
 	\end{center}
@@ -114,22 +120,20 @@
 \subsection{CAVE}
 \begin{frame}
     \frametitle{CAVE}
+
+    \begin{itemize}
+        \item data analysis and manipulation \cite{AwipsDocs}
+        \item layer different scenarios (multiple radars in hdf5)
+	\end{itemize}
+
     \begin{center}
     	\begin{figure}
-			\includegraphics[width=0.7\textwidth]{gfx/Unidata_AWIPS2_CAVE.png}
+			\includegraphics[width=0.64\textwidth]{gfx/Unidata_AWIPS2_CAVE.png}
       	  	\caption[]{Awips Infrastructure \cite{Uni01}}
 		\end{figure}
 	\end{center}
 \end{frame}
 
-\begin{frame}
-    \frametitle{CAVE}
-    \begin{itemize}
-        \item data analysis \cite{AwipsDocs} % For our research
-        \item data storage % For our research
-        \item using it for our research
-	\end{itemize}
-\end{frame}
 
 \subsection{CESM}
 \begin{frame}
@@ -160,9 +164,8 @@
 \begin{frame}
 	\frametitle{ECOHAM5}
 	\begin{itemize}
-		\item model for atmospheric circulation \cite{echam}
-		\item developed by the Max Planck Institute for Meteorology
-		\item branched in year 1987 from the global numerical weather prediction model by ECMWF
+		\item model for atmospheric circulation with focus on the nord sea \cite{echam}
+        \item a progression of older models by using MPI
 	\end{itemize}
 \end{frame}
 
@@ -180,7 +183,10 @@
 \begin{frame}[fragile]
 	\frametitle{I/O analysis}
 	\begin{center}
-	\includegraphics[width=0.65\textwidth]{gfx/DataLifecycle.png}
+	\begin{figure}
+	\includegraphics[width=0.6\textwidth]{gfx/DataLifecycle.png}
+	\caption[]{Data Life-Cycle \cite{LanUni}}
+	\end{figure}
 	\end{center}
 
 \end{frame}
@@ -192,14 +198,14 @@
 	\frametitle{Summary}
 
 	\begin{itemize}
-		\item Models
+		\item climate models
 		\begin{itemize}
 			\item CESM, ECOHAM5
 			\item original research goal failed.
 			\item investigation of different models
 		\end{itemize}
 
-		\item analyzing
+		\item analyzing of weather
 		\begin{itemize}
 		    \item AWIPS II
 		\end{itemize}
