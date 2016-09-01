@@ -53,14 +53,14 @@ Cite : "AWIPS II is a Java application consisting of a data display client (CAVE
 ## EDEX (Environmental Data EXchange )
 **EDEX** is the server for AWIPS2 which is used mainly for preparing the data for CAVE. There are different parts the server is containing of.
 
-The first source for data is the LDM the Local Data Manager as a piece of software to share data with computers in other networks. The LDM can handle different kinds of data from National Weather Service data stream to
+The first source for data is the LDM the Local Data Manager as a piece of software to share data with computers in other networks. The IDD (Internet Data Distribution) provides the LDM with data out of the Unidata community. The LDM can handle different kinds of data from National Weather Service data stream to
 radar data, satellit images and grid data from numerical forecast models. The data could be get directly from the source or a LDM can communicate with another LDM.
 When the LDM received data inside the EDEX, there is a message being send to the **Qipd** which is the Apache __Queue Processor Interface Daemon__ spreading the the availabilty of a data ready for processing.
 The messages by the messaging system **Qipd** will contain also a file header for the EDEX to know which decoder to use.
 EDEX can decode the data to make it ready for additional processing or telling CAVE that it is available for displaying. All of those messages are communicated via **edexBridge**
 The default ingest server will handle the all data which are diffrent to grib messages. GRIB fully spelled __General Regularly-distributed Information in Binary form__ is a
 data format by the ___WMO___ (World Meterological Organization) to encode results of weather models. The data is written binary into a table format. It's made effecient storage and transfer.
-The PostgreSQL or Postgres in short is relevant for the storage and the requests metadata, database tables and already decoded data. Postgres itself is a relational database 
+The PostgreSQL or Postgres in short is relevant for the storage and the requests of metadata, database tables and already decoded data. Postgres itself is a relational database 
 management system which reads and store the EDEX metadata. The database size is not limited and it can handle 32 TB of database table capacity.
 
 HDF5 fully spelled Hierarchical Data Format (v.5) is the main format used in AWIPS2 to store processed grids, images and so on. It is nowadays very similar to netCDF, which is
