@@ -47,7 +47,7 @@ Eventually we decided to focus our work on Community Earth System Model (CESM) a
 # Unidata - Awips2
 
 AWIPS2 is a package which contains weather forecast display and analysis. This open-source `Java` application consists of `EDEX` a data server and CAVE the client for data analysis and rendering. 
-
+Cite : "AWIPS II is a Java application consisting of a data display client (CAVE, which runs on Red Hat/CentOS Linux and OS X) and a backend data server (EDEX, which runs only on Linux)"
 ![AWIPS2 System](pics/awips2_coms.png "AWIPS2 Figure")
 
 ## EDEX (Environmental Data EXchange )
@@ -56,9 +56,12 @@ AWIPS2 is a package which contains weather forecast display and analysis. This o
 The first source for data is the LDM the Local Data Manager as a piece of software to share data with computers in other networks. The LDM can handle different kinds of data from National Weather Service data stream to
 radar data, satellit images and grid data from numerical forecast models. The data could be get directly from the source or a LDM can communicate with another LDM.
 When the LDM received data inside the EDEX, there is a message being send to the **Qipd** which is the Apache __Queue Processor Interface Daemon__ spreading the the availabilty of a data ready for processing.
+The messages by the **Qipd** will contain also a file header for the EDEX to know which decoder to use.
 EDEX can decode the data to make it ready for additional processing or telling CAVE that it is available for displaying. All of those messages are communicated via **edexBridge**
+The default ingest server will handle the all data which are diffrent to grib messages. GRIB fully spelled __General Regularly-distributed Information in Binary form__ is a
+data format by the ___WMO___ (World Meterological Organization) to encode results of weather models. The data is written binary into a table format. It's made effecient storage and transfer.
 The PostgreSQL or Postgres in short is relevant for the storage and the requests metadata, database tables and already decoded data. Postgres itself is a relational database 
-management system which reads and storage the EDEX metadata. The database size is not limited and it can handle 32 TB of database table capacity.
+management system which reads and store the EDEX metadata. The database size is not limited and it can handle 32 TB of database table capacity.
 
 HDF5 fully spelled Hierarchical Data Format (v.5) is the main format used in AWIPS2 to store processed grids, images and so on. It is nowadays very similar to netCDF, which is
 developed by Unidata. HDF5 can handle many different types just in one single file.
@@ -319,16 +322,20 @@ If there were better documentation about the setup and compilation for CESM we c
 # ECOHAM5
 
 ## About
-ECHAM is a model for atmospheric circulation, which was developed by the Max Planck Institute for Meteorology. It's a important part of the MPI-ESM which is the 
-Earth system model of the Max Planck Institute. ECHAM itself is branched in year 1987 from the global numerical weather prediction model by ECMWF. Ever scince its developed by Max Planck Institute.
+ECOHAM5
+
+__research about ECOHAM5 not ECHAM__
+
+... is a model for atmospheric circulation, which was developed by the Max Planck Institute for Meteorology. It's a important part of the MPI-ESM which is the 
+Earth system model of the Max Planck Institute. ECHAM itself is branched in year 1987 from the global numerical weather prediction model by ECMWF. Ever science its developed by Max Planck Institute.
 
 ## Getting Started
 
 ### Source Code
-The [Code for ECHAM6](http://www.mpimet.mpg.de/en/science/models/license/) might be available here.
+Not freely available in the internet.
 
-### Compile ECOHAM
-To compile ECOHAM for a testcase, there is the following script to be run in different ways:
+### Compile ECOHAM5
+To compile ECOHAM5 for a testcase, there is the following script to be run in different ways:
 
 	./CompileJob-cluster.sh TEST 0  // for just the compiling
 	./CompileJob-cluster.sh TEST 1	// for compiling and make it ready to run
@@ -403,4 +410,5 @@ http://www.cesm.ucar.edu/models/current.html
 http://www2.cesm.ucar.edu/
 http://www.ecmwf.int/en/forecasts/
 http://www.unidata.ucar.edu/software/awips2/
+https://unidata.github.io/awips2/
 https://www.bu.edu/datamanagement/background/data-life-cycle/  Data Lifecycle
